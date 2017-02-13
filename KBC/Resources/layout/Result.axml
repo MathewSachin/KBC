@@ -8,11 +8,16 @@
         android:layout_height="match_parent"
         android:padding="16dp">
         <TextView
-            android:text="Congratulations"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="30sp"
             android:paddingBottom="20dp"
-            android:id="@+id/cashView" />
+            android:id="@+id/resultMessageView" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="25sp"
+            android:paddingBottom="20dp"
+            android:id="@+id/resultCashView" />
     </LinearLayout>
 </ScrollView>

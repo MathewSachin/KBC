@@ -209,6 +209,15 @@ namespace KBC
             cashView.Text = $"Cash: ₹{Question.Amounts[answered - 1]}";
         }
 
+        void ResultView()
+        {
+            var i = new Intent(this, typeof(ResultActivity));
+            i.PutExtra("Answered", answered);
+            StartActivity(i);
+
+            Finish();
+        }
+
         void AfterCorrectAnswer(Button b)
         {
             RunOnUiThread(() => b.SetColor(Color.Green));
@@ -225,12 +234,7 @@ namespace KBC
                 UpdateCashView();
                 
                 if (answered == Question.Amounts.Length)
-                {
-                    var i = new Intent(this, typeof(ResultActivity));
-                    StartActivity(i);
-
-                    Finish();
-                }
+                    ResultView();
                 else
                 {
                     ShowQuestion();
@@ -284,9 +288,9 @@ namespace KBC
                 {
                     RunOnUiThread(() => b.SetColor(Color.Red));
 
-                    Thread.Sleep(2000);
+                    Thread.Sleep(1000);
 
-                    RunOnUiThread(() => Finish());
+                    RunOnUiThread(ResultView);
                 }
             }).Start();
         }        

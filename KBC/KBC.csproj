@@ -51,16 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
-    <Compile Include="GameActivity.cs" />
-    <Compile Include="ResultActivity.cs" />
-    <Compile Include="MoneyTreeActivity.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="Activities\GameActivity.cs" />
+    <Compile Include="Activities\ResultActivity.cs" />
+    <Compile Include="Activities\MoneyTreeActivity.cs" />
+    <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\MoneyTree.axml">
       <SubType>Designer</SubType>

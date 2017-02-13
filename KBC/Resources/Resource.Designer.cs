@@ -115,6 +115,12 @@ namespace KBC
 			// aapt resource value: 0x7f070001
 			public const int questionView = 2131165185;
 			
+			// aapt resource value: 0x7f07000d
+			public const int resultCashView = 2131165197;
+			
+			// aapt resource value: 0x7f07000c
+			public const int resultMessageView = 2131165196;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
