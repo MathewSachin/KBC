@@ -47,17 +47,24 @@
             android:text="View Money Tree"
             android:id="@+id/moneyTreeButton"/>
 
-    <Button android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Audience Poll"
-            android:id="@+id/audiencePollButton"/>
-    <Button android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="50 50"
-            android:id="@+id/fifty50Button"/>
-    <Button android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Double Tip"
-            android:id="@+id/moneyTreeButton"/>
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_height="wrap_content"
+                  android:layout_width="match_parent">
+      <Button android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Audience Poll"
+              android:layout_weight="1"
+              android:id="@+id/audiencePollButton"/>
+      <Button android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="50 50"
+              android:layout_weight="1"
+              android:id="@+id/fifty50Button"/>
+      <Button android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Double Tip"
+              android:layout_weight="1"
+              android:id="@+id/doubleTipButton"/>
+    </LinearLayout>
   </LinearLayout>
 </ScrollView>

@@ -17,7 +17,10 @@ namespace KBC
         int answered, correctOption;
         TextView questionView, cashView;
         Button optionA, optionB, optionC, optionD;
-        Button fifty50Button;
+        bool doubleTip;
+
+        bool fifty50Used, doubleTipUsed, audiencePollUsed;
+        Button fifty50Button, doubleTipButton, audiencePollButton;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -52,7 +55,39 @@ namespace KBC
             fifty50Button = FindViewById<Button>(Resource.Id.fifty50Button);
             fifty50Button.Click += Fifty50;
 
+            doubleTipButton = FindViewById<Button>(Resource.Id.doubleTipButton);
+            doubleTipButton.Click += DoubleTip;
+
+            audiencePollButton = FindViewById<Button>(Resource.Id.audiencePollButton);
+
             ShowQuestion();
+        }
+
+        void DoubleTip(object sender, EventArgs e)
+        {
+            doubleTip = true;
+
+            doubleTipUsed = true;
+            doubleTipButton.SetTextColor(Color.Red);
+
+            LifelineState(false);
+        }
+
+        void LifelineState(bool Enabled)
+        {
+            if (!Enabled)
+                fifty50Button.Enabled = doubleTipButton.Enabled = audiencePollButton.Enabled = false;
+            else
+            {
+                if (!fifty50Used)
+                    fifty50Button.Enabled = true;
+
+                if (!doubleTipUsed)
+                    doubleTipButton.Enabled = true;
+
+                if (!audiencePollUsed)
+                    audiencePollButton.Enabled = true;
+            }
         }
 
         void Fifty50(object sender, EventArgs e)
@@ -73,7 +108,10 @@ namespace KBC
             foreach (var b in list)
                 b.Enabled = false;
             
-            fifty50Button.Enabled = false;
+            fifty50Used = true;
+            fifty50Button.SetTextColor(Color.Red);
+
+            LifelineState(false);
         }
 
         void ViewMoneyTree(object sender, EventArgs e)
@@ -97,9 +135,46 @@ namespace KBC
             correctOption = q.CorrectOption;
         }
 
+        void AfterCorrectAnswer(Button b)
+        {
+            RunOnUiThread(() => b.Background.SetColorFilter(Color.Green, PorterDuff.Mode.SrcIn));
+
+            Thread.Sleep(2000);
+
+            RunOnUiThread(() =>
+            {
+                ResetColor(optionA);
+                ResetColor(optionB);
+                ResetColor(optionC);
+                ResetColor(optionD);
+
+                cashView.Text = $"Cash: ₹{Question.Amounts[answered]}";
+
+                ++answered;
+
+                ShowQuestion();
+
+                OptionsState(true);
+                optionA.Enabled = optionB.Enabled = optionC.Enabled = optionD.Enabled = true;
+                doubleTip = false;
+                
+                LifelineState(true);
+            });
+        }
+
+        void ResetColor(Button b)
+        {
+            b.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
+        }
+        
+        void OptionsState(bool Clickable)
+        {
+            optionA.Clickable = optionB.Clickable = optionC.Clickable = optionD.Clickable = Clickable;
+        }
+
         void OptionClick(Button b, int Index)
         {
-            optionA.Clickable = optionB.Clickable = optionC.Clickable = optionD.Clickable = false;
+            OptionsState(false);
 
             b.Background.SetColorFilter(Color.Gold, PorterDuff.Mode.SrcIn);
 
@@ -108,23 +183,17 @@ namespace KBC
                 Thread.Sleep(1000);
 
                 if (Index == correctOption)
+                    AfterCorrectAnswer(b);
+                else if (doubleTip)
                 {
-                    RunOnUiThread(() => b.Background.SetColorFilter(Color.Green, PorterDuff.Mode.SrcIn));
-                    
-                    Thread.Sleep(2000);
-
                     RunOnUiThread(() =>
                     {
-                        b.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
+                        b.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn);
 
-                        cashView.Text = $"Cash: ₹{Question.Amounts[answered]}";
+                        OptionsState(true);
 
-                        ++answered;
-
-                        ShowQuestion();
-
-                        optionA.Clickable = optionB.Clickable = optionC.Clickable = optionD.Clickable = true;
-                        optionA.Enabled = optionB.Enabled = optionC.Enabled = optionD.Enabled = true;
+                        b.Clickable = false;
+                        doubleTip = false;
                     });
                 }
                 else RunOnUiThread(() => b.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn));
