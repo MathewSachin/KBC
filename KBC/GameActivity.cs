@@ -154,13 +154,16 @@ namespace KBC
         {
             RunOnUiThread(() => b.Background.SetColorFilter(Color.Green, PorterDuff.Mode.SrcIn));
 
-            Thread.Sleep(2000);
+            // Money tree gets updated
+            ++answered;
+
+            Thread.Sleep(1000);
 
             RunOnUiThread(() =>
             {
                 ResetColor(optionA, optionB, optionC, optionD);
 
-                cashView.Text = $"Cash: ₹{Question.Amounts[answered++]}";
+                cashView.Text = $"Cash: ₹{Question.Amounts[answered - 1]}";
                 
                 if (answered == Question.Amounts.Length)
                 {
@@ -222,7 +225,7 @@ namespace KBC
                 {
                     RunOnUiThread(() => b.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn));
 
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
 
                     RunOnUiThread(() => Finish());
                 }
