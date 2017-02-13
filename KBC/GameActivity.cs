@@ -19,6 +19,8 @@ namespace KBC
         Button optionA, optionB, optionC, optionD;
         bool doubleTip;
 
+        Button[] options;
+
         bool fifty50Used, doubleTipUsed, audiencePollUsed;
         Button fifty50Button, doubleTipButton, audiencePollButton;
 
@@ -42,6 +44,8 @@ namespace KBC
             optionC = FindViewById<Button>(Resource.Id.optionC);
             optionD = FindViewById<Button>(Resource.Id.optionD);
 
+            options = new[] { optionA, optionB, optionC, optionD };
+
             optionA.Click += (s, e) => OptionClick(optionA, 1);
             optionB.Click += (s, e) => OptionClick(optionB, 2);
             optionC.Click += (s, e) => OptionClick(optionC, 3);
@@ -59,8 +63,19 @@ namespace KBC
             doubleTipButton.Click += DoubleTip;
 
             audiencePollButton = FindViewById<Button>(Resource.Id.audiencePollButton);
+            audiencePollButton.Click += AudiencePoll;
 
             ShowQuestion();
+        }
+
+        void AudiencePoll(object sender, EventArgs e)
+        {
+            audiencePollUsed = true;
+            audiencePollButton.SetTextColor(Color.Red);
+
+            Toast.MakeText(this, options[correctOption - 1].Text, ToastLength.Short).Show();
+
+            LifelineState(false);
         }
 
         void DoubleTip(object sender, EventArgs e)
@@ -127,10 +142,10 @@ namespace KBC
 
             questionView.Text = q.Statement;
 
-            optionA.Text = q.OptionA;
-            optionB.Text = q.OptionB;
-            optionC.Text = q.OptionC;
-            optionD.Text = q.OptionD;
+            optionA.Text = "A. " + q.OptionA;
+            optionB.Text = "B. " + q.OptionB;
+            optionC.Text = "C. " + q.OptionC;
+            optionD.Text = "D. " + q.OptionD;
 
             correctOption = q.CorrectOption;
         }
@@ -143,10 +158,7 @@ namespace KBC
 
             RunOnUiThread(() =>
             {
-                ResetColor(optionA);
-                ResetColor(optionB);
-                ResetColor(optionC);
-                ResetColor(optionD);
+                ResetColor(optionA, optionB, optionC, optionD);
 
                 cashView.Text = $"Cash: ₹{Question.Amounts[answered]}";
 
@@ -162,9 +174,10 @@ namespace KBC
             });
         }
 
-        void ResetColor(Button b)
+        void ResetColor(params Button[] Buttons)
         {
-            b.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
+            foreach (var b in Buttons)
+                b.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
         }
         
         void OptionsState(bool Clickable)
