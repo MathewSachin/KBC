@@ -28,8 +28,11 @@ namespace KBC
                     Text = "₹" + Question.Amounts[i]                    
                 };
 
-                if (i < answered)
-                    b.SetColor(Color.Gold);
+                if (i == answered - 1)
+                    b.SetColor(Color.Orange);
+
+                if (i == 3 || i == 7 || i == 14)
+                    b.SetTextColor(Color.Yellow);
 
                 layout.AddView(b);
             }
