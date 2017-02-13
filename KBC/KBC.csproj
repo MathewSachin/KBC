@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameActivity.cs" />
+    <Compile Include="ResultActivity.cs" />
     <Compile Include="MoneyTreeActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Question.cs" />
@@ -64,6 +65,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Game.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Result.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

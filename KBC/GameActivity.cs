@@ -160,17 +160,25 @@ namespace KBC
             {
                 ResetColor(optionA, optionB, optionC, optionD);
 
-                cashView.Text = $"Cash: ₹{Question.Amounts[answered]}";
-
-                ++answered;
-
-                ShowQuestion();
-
-                OptionsState(true);
-                optionA.Enabled = optionB.Enabled = optionC.Enabled = optionD.Enabled = true;
-                doubleTip = false;
+                cashView.Text = $"Cash: ₹{Question.Amounts[answered++]}";
                 
-                LifelineState(true);
+                if (answered == Question.Amounts.Length)
+                {
+                    var i = new Intent(this, typeof(ResultActivity));
+                    StartActivity(i);
+
+                    Finish();
+                }
+                else
+                {
+                    ShowQuestion();
+
+                    OptionsState(true);
+                    optionA.Enabled = optionB.Enabled = optionC.Enabled = optionD.Enabled = true;
+                    doubleTip = false;
+
+                    LifelineState(true);
+                }
             });
         }
 
@@ -188,6 +196,7 @@ namespace KBC
         void OptionClick(Button b, int Index)
         {
             OptionsState(false);
+            LifelineState(false);
 
             b.Background.SetColorFilter(Color.Gold, PorterDuff.Mode.SrcIn);
 
@@ -209,7 +218,14 @@ namespace KBC
                         doubleTip = false;
                     });
                 }
-                else RunOnUiThread(() => b.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn));
+                else
+                {
+                    RunOnUiThread(() => b.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn));
+
+                    Thread.Sleep(1000);
+
+                    RunOnUiThread(() => Finish());
+                }
             }).Start();
         }
     }
