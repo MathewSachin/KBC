@@ -41,6 +41,22 @@ namespace KBC
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int theme_devicedefault_background = 2131034112;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -63,32 +79,38 @@ namespace KBC
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int cashView = 2131034112;
+			// aapt resource value: 0x7f070007
+			public const int audiencePollButton = 2131165191;
 			
-			// aapt resource value: 0x7f050008
-			public const int moneyTree = 2131034120;
+			// aapt resource value: 0x7f070000
+			public const int cashView = 2131165184;
 			
-			// aapt resource value: 0x7f050006
-			public const int moneyTreeButton = 2131034118;
+			// aapt resource value: 0x7f070008
+			public const int fifty50Button = 2131165192;
 			
-			// aapt resource value: 0x7f050007
-			public const int newGameButton = 2131034119;
+			// aapt resource value: 0x7f07000a
+			public const int moneyTree = 2131165194;
 			
-			// aapt resource value: 0x7f050002
-			public const int optionA = 2131034114;
+			// aapt resource value: 0x7f070006
+			public const int moneyTreeButton = 2131165190;
 			
-			// aapt resource value: 0x7f050003
-			public const int optionB = 2131034115;
+			// aapt resource value: 0x7f070009
+			public const int newGameButton = 2131165193;
 			
-			// aapt resource value: 0x7f050004
-			public const int optionC = 2131034116;
+			// aapt resource value: 0x7f070002
+			public const int optionA = 2131165186;
 			
-			// aapt resource value: 0x7f050005
-			public const int optionD = 2131034117;
+			// aapt resource value: 0x7f070003
+			public const int optionB = 2131165187;
 			
-			// aapt resource value: 0x7f050001
-			public const int questionView = 2131034113;
+			// aapt resource value: 0x7f070004
+			public const int optionC = 2131165188;
+			
+			// aapt resource value: 0x7f070005
+			public const int optionD = 2131165189;
+			
+			// aapt resource value: 0x7f070001
+			public const int questionView = 2131165185;
 			
 			static Id()
 			{
@@ -137,6 +159,22 @@ namespace KBC
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int Theme_Custom = 2131099648;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

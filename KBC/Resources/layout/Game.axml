@@ -6,8 +6,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp">
-    <TextView android:layout_gravity="left"
-              android:text="Cash: ₹0"
+    <TextView android:text="Cash: ₹0"
               android:layout_height="wrap_content"
               android:layout_width="match_parent"
               android:id="@+id/cashView"/>
@@ -46,6 +45,19 @@
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Money Tree"
+            android:id="@+id/moneyTreeButton"/>
+
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Audience Poll"
+            android:id="@+id/audiencePollButton"/>
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="50 50"
+            android:id="@+id/fifty50Button"/>
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Double Tip"
             android:id="@+id/moneyTreeButton"/>
   </LinearLayout>
 </ScrollView>

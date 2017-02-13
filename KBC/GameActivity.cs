@@ -6,6 +6,7 @@ using Android.Widget;
 using System;
 using Android.Graphics;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace KBC
 {
@@ -16,6 +17,7 @@ namespace KBC
         int answered, correctOption;
         TextView questionView, cashView;
         Button optionA, optionB, optionC, optionD;
+        Button fifty50Button;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -47,9 +49,33 @@ namespace KBC
             optionC.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
             optionD.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
 
+            fifty50Button = FindViewById<Button>(Resource.Id.fifty50Button);
+            fifty50Button.Click += Fifty50;
+
             ShowQuestion();
         }
-        
+
+        void Fifty50(object sender, EventArgs e)
+        {
+            var list = new List<Button>();
+
+            if (correctOption != 1)
+                list.Add(optionA);
+            if (correctOption != 2)
+                list.Add(optionB);
+            if (correctOption != 3)
+                list.Add(optionC);
+            if (correctOption != 4)
+                list.Add(optionD);
+
+            list.RemoveAt(r.Next(3));
+
+            foreach (var b in list)
+                b.Enabled = false;
+            
+            fifty50Button.Enabled = false;
+        }
+
         void ViewMoneyTree(object sender, EventArgs e)
         {
             var i = new Intent(this, typeof(MoneyTreeActivity));
@@ -98,6 +124,7 @@ namespace KBC
                         ShowQuestion();
 
                         optionA.Clickable = optionB.Clickable = optionC.Clickable = optionD.Clickable = true;
+                        optionA.Enabled = optionB.Enabled = optionC.Enabled = optionD.Enabled = true;
                     });
                 }
                 else RunOnUiThread(() => b.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn));
