@@ -50,6 +50,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
     <Compile Include="GameActivity.cs" />
     <Compile Include="ResultActivity.cs" />
     <Compile Include="MoneyTreeActivity.cs" />

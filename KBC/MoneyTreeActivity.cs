@@ -29,7 +29,7 @@ namespace KBC
                 };
 
                 if (i < answered)
-                    b.Background.SetColorFilter(Color.Gold, PorterDuff.Mode.SrcIn);
+                    b.SetColor(Color.Gold);
 
                 layout.AddView(b);
             }

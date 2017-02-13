@@ -51,10 +51,10 @@ namespace KBC
             optionC.Click += (s, e) => OptionClick(optionC, 3);
             optionD.Click += (s, e) => OptionClick(optionD, 4);
 
-            optionA.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
-            optionB.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
-            optionC.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
-            optionD.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
+            optionA.SetColor(Color.Gray);
+            optionB.SetColor(Color.Gray);
+            optionC.SetColor(Color.Gray);
+            optionD.SetColor(Color.Gray);
 
             fifty50Button = FindViewById<Button>(Resource.Id.fifty50Button);
             fifty50Button.Click += Fifty50;
@@ -152,7 +152,7 @@ namespace KBC
 
         void AfterCorrectAnswer(Button b)
         {
-            RunOnUiThread(() => b.Background.SetColorFilter(Color.Green, PorterDuff.Mode.SrcIn));
+            RunOnUiThread(() => b.SetColor(Color.Green));
 
             // Money tree gets updated
             ++answered;
@@ -188,7 +188,7 @@ namespace KBC
         void ResetColor(params Button[] Buttons)
         {
             foreach (var b in Buttons)
-                b.Background.SetColorFilter(Color.Gray, PorterDuff.Mode.SrcIn);
+                b.SetColor(Color.Gray);
         }
         
         void OptionsState(bool Clickable)
@@ -201,7 +201,7 @@ namespace KBC
             OptionsState(false);
             LifelineState(false);
 
-            b.Background.SetColorFilter(Color.Gold, PorterDuff.Mode.SrcIn);
+            b.SetColor(Color.Gold);
 
             new Thread(() =>
             {
@@ -213,7 +213,7 @@ namespace KBC
                 {
                     RunOnUiThread(() =>
                     {
-                        b.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn);
+                        b.SetColor(Color.Red);
 
                         OptionsState(true);
 
@@ -223,14 +223,14 @@ namespace KBC
                 }
                 else
                 {
-                    RunOnUiThread(() => b.Background.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn));
+                    RunOnUiThread(() => b.SetColor(Color.Red));
 
                     Thread.Sleep(2000);
 
                     RunOnUiThread(() => Finish());
                 }
             }).Start();
-        }
+        }        
     }
 }
 
