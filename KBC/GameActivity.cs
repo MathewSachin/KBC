@@ -14,7 +14,7 @@ namespace KBC
     public class GameActivity : Activity
     {
         Random r;
-        int answered, correctOption;
+        int answered, currentQuestion, correctOption;
         TextView questionView, cashView;
         Button optionA, optionB, optionC, optionD;
         bool doubleTip;
@@ -24,13 +24,8 @@ namespace KBC
         bool fifty50Used, doubleTipUsed, audiencePollUsed;
         Button fifty50Button, doubleTipButton, audiencePollButton;
 
-        protected override void OnCreate(Bundle bundle)
+        void Init()
         {
-            base.OnCreate(bundle);
-
-            // Set our view from the "main" layout resource
-            SetContentView (Resource.Layout.Game);
-
             r = new Random(DateTime.Now.Millisecond);
 
             var moneyTreeButton = FindViewById<Button>(Resource.Id.moneyTreeButton);
@@ -64,14 +59,68 @@ namespace KBC
 
             audiencePollButton = FindViewById<Button>(Resource.Id.audiencePollButton);
             audiencePollButton.Click += AudiencePoll;
+        }
 
-            ShowQuestion();
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+
+            // Set our view from the "main" layout resource
+            SetContentView (Resource.Layout.Game);
+
+            Init();
+
+            if (bundle == null)
+                ShowQuestion();
+            else
+            {
+                currentQuestion = bundle.GetInt(nameof(currentQuestion));
+                answered = bundle.GetInt(nameof(answered));
+
+                ShowQuestion(currentQuestion);
+
+                UpdateCashView();
+
+                fifty50Used = bundle.GetBoolean(nameof(fifty50Used));
+                doubleTipUsed = bundle.GetBoolean(nameof(doubleTipUsed));
+                audiencePollUsed = bundle.GetBoolean(nameof(audiencePollUsed));
+
+                if (fifty50Used)
+                {
+                    fifty50Button.Enabled = false;
+                    fifty50Button.SetColor(Color.Red);
+                }
+
+                if (doubleTipUsed)
+                {
+                    doubleTipButton.Enabled = false;
+                    doubleTipButton.SetColor(Color.Red);
+                }
+
+                if (audiencePollUsed)
+                {
+                    audiencePollButton.Enabled = false;
+                    audiencePollButton.SetColor(Color.Red);
+                }
+            }
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            outState.PutInt(nameof(currentQuestion), currentQuestion);
+            outState.PutInt(nameof(answered), answered);
+
+            outState.PutBoolean(nameof(fifty50Used), fifty50Used);
+            outState.PutBoolean(nameof(doubleTipUsed), doubleTipUsed);
+            outState.PutBoolean(nameof(audiencePollUsed), audiencePollUsed);
+            
+            base.OnSaveInstanceState(outState);
         }
 
         void AudiencePoll(object sender, EventArgs e)
         {
             audiencePollUsed = true;
-            audiencePollButton.SetTextColor(Color.Red);
+            audiencePollButton.SetColor(Color.Red);
 
             Toast.MakeText(this, options[correctOption - 1].Text, ToastLength.Short).Show();
 
@@ -83,7 +132,7 @@ namespace KBC
             doubleTip = true;
 
             doubleTipUsed = true;
-            doubleTipButton.SetTextColor(Color.Red);
+            doubleTipButton.SetColor(Color.Red);
 
             LifelineState(false);
         }
@@ -124,7 +173,7 @@ namespace KBC
                 b.Enabled = false;
             
             fifty50Used = true;
-            fifty50Button.SetTextColor(Color.Red);
+            fifty50Button.SetColor(Color.Red);
 
             LifelineState(false);
         }
@@ -136,9 +185,14 @@ namespace KBC
             StartActivity(i);
         }
 
-        void ShowQuestion()
+        void ShowQuestion(int Index = -1)
         {
-            var q = Question.Questions[r.Next(Question.Questions.Length)];
+            if (Index == -1)
+                Index = r.Next(Question.Questions.Length);
+
+            currentQuestion = Index;
+
+            var q = Question.Questions[Index];
 
             questionView.Text = q.Statement;
 
@@ -148,6 +202,11 @@ namespace KBC
             optionD.Text = "D. " + q.OptionD;
 
             correctOption = q.CorrectOption;
+        }
+
+        void UpdateCashView()
+        {
+            cashView.Text = $"Cash: ₹{Question.Amounts[answered - 1]}";
         }
 
         void AfterCorrectAnswer(Button b)
@@ -163,7 +222,7 @@ namespace KBC
             {
                 ResetColor(optionA, optionB, optionC, optionD);
 
-                cashView.Text = $"Cash: ₹{Question.Amounts[answered - 1]}";
+                UpdateCashView();
                 
                 if (answered == Question.Amounts.Length)
                 {
