@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+  <LinearLayout android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+    <TextView android:layout_gravity="left"
+              android:text="Cash: ₹0"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              android:id="@+id/cashView"/>
+
+    <TextView android:minHeight="300dp"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              android:id="@+id/questionView"/>
+
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_height="wrap_content"
+                  android:layout_width="match_parent">
+      <Button android:id="@+id/optionA"
+              android:layout_weight="1"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"/>
+      <Button android:id="@+id/optionB"
+              android:layout_weight="1"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_height="wrap_content"
+                  android:layout_width="match_parent">
+      <Button android:id="@+id/optionC"
+              android:layout_weight="1"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"/>
+      <Button android:id="@+id/optionD"
+              android:layout_weight="1"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"/>
+    </LinearLayout>
+
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Money Tree"
+            android:id="@+id/moneyTreeButton"/>
+  </LinearLayout>
+</ScrollView>
