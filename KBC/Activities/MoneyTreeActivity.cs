@@ -23,13 +23,16 @@ namespace KBC
 
             for (int i = Question.Amounts.Length - 1; i >= 0; --i)
             {
-                var b = new Button(this)
+                var b = new TextView(this)
                 {
-                    Text = "₹" + Question.Amounts[i]                    
+                    Text = $"{(i + 1).ToString().PadLeft(2, ' ')}.\t\t ₹{Question.Amounts[i]}",
+                    TextAlignment = TextAlignment.ViewEnd,
+                    LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent),
+                    TextSize = 20
                 };
 
                 if (i == answered - 1)
-                    b.SetColor(Color.Orange);
+                    b.SetBackgroundColor(Color.Orange);
 
                 if (i == 3 || i == 7 || i == 14)
                     b.SetTextColor(Color.Yellow);
