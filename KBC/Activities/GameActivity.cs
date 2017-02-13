@@ -7,6 +7,7 @@ using System;
 using Android.Graphics;
 using System.Threading;
 using System.Collections.Generic;
+using Android.Media;
 
 namespace KBC
 {
@@ -23,6 +24,8 @@ namespace KBC
 
         bool fifty50Used, doubleTipUsed, audiencePollUsed;
         Button fifty50Button, doubleTipButton, audiencePollButton;
+
+        MediaPlayer questionAskedMediaPlayer, correctAnswerMediaPlayer;
 
         void Init()
         {
@@ -59,6 +62,9 @@ namespace KBC
 
             audiencePollButton = FindViewById<Button>(Resource.Id.audiencePollButton);
             audiencePollButton.Click += AudiencePoll;
+
+            questionAskedMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Question);
+            correctAnswerMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Correct);
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -187,6 +193,9 @@ namespace KBC
 
         void ShowQuestion(int Index = -1)
         {
+            if (answered == 0)
+                questionAskedMediaPlayer.Start();
+
             if (Index == -1)
                 Index = r.Next(Question.Questions.Length);
 
@@ -220,12 +229,14 @@ namespace KBC
 
         void AfterCorrectAnswer(Button b)
         {
+            correctAnswerMediaPlayer.Start();
+
             RunOnUiThread(() => b.SetColor(Color.Green));
 
             // Money tree gets updated
             ++answered;
 
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
 
             RunOnUiThread(() =>
             {
