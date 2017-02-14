@@ -79,47 +79,71 @@ namespace KBC
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080007
-			public const int audiencePollButton = 2131230727;
-			
-			// aapt resource value: 0x7f080000
-			public const int cashView = 2131230720;
-			
-			// aapt resource value: 0x7f080009
-			public const int doubleTipButton = 2131230729;
+			// aapt resource value: 0x7f08000f
+			public const int audiencePollButton = 2131230735;
 			
 			// aapt resource value: 0x7f080008
-			public const int fifty50Button = 2131230728;
+			public const int cashView = 2131230728;
 			
-			// aapt resource value: 0x7f08000b
-			public const int moneyTree = 2131230731;
+			// aapt resource value: 0x7f080011
+			public const int doubleTipButton = 2131230737;
 			
-			// aapt resource value: 0x7f080006
-			public const int moneyTreeButton = 2131230726;
+			// aapt resource value: 0x7f080010
+			public const int fifty50Button = 2131230736;
+			
+			// aapt resource value: 0x7f080013
+			public const int moneyTree = 2131230739;
+			
+			// aapt resource value: 0x7f08000e
+			public const int moneyTreeButton = 2131230734;
+			
+			// aapt resource value: 0x7f080012
+			public const int newGameButton = 2131230738;
 			
 			// aapt resource value: 0x7f08000a
-			public const int newGameButton = 2131230730;
-			
-			// aapt resource value: 0x7f080002
-			public const int optionA = 2131230722;
-			
-			// aapt resource value: 0x7f080003
-			public const int optionB = 2131230723;
-			
-			// aapt resource value: 0x7f080004
-			public const int optionC = 2131230724;
-			
-			// aapt resource value: 0x7f080005
-			public const int optionD = 2131230725;
+			public const int optionA = 2131230730;
 			
 			// aapt resource value: 0x7f080001
-			public const int questionView = 2131230721;
+			public const int optionABar = 2131230721;
 			
-			// aapt resource value: 0x7f08000d
-			public const int resultCashView = 2131230733;
+			// aapt resource value: 0x7f080000
+			public const int optionACent = 2131230720;
+			
+			// aapt resource value: 0x7f08000b
+			public const int optionB = 2131230731;
+			
+			// aapt resource value: 0x7f080003
+			public const int optionBBar = 2131230723;
+			
+			// aapt resource value: 0x7f080002
+			public const int optionBCent = 2131230722;
 			
 			// aapt resource value: 0x7f08000c
-			public const int resultMessageView = 2131230732;
+			public const int optionC = 2131230732;
+			
+			// aapt resource value: 0x7f080005
+			public const int optionCBar = 2131230725;
+			
+			// aapt resource value: 0x7f080004
+			public const int optionCCent = 2131230724;
+			
+			// aapt resource value: 0x7f08000d
+			public const int optionD = 2131230733;
+			
+			// aapt resource value: 0x7f080007
+			public const int optionDBar = 2131230727;
+			
+			// aapt resource value: 0x7f080006
+			public const int optionDCent = 2131230726;
+			
+			// aapt resource value: 0x7f080009
+			public const int questionView = 2131230729;
+			
+			// aapt resource value: 0x7f080015
+			public const int resultCashView = 2131230741;
+			
+			// aapt resource value: 0x7f080014
+			public const int resultMessageView = 2131230740;
 			
 			static Id()
 			{
@@ -135,16 +159,19 @@ namespace KBC
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Game = 2130903040;
+			public const int AudiencePoll = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Main = 2130903041;
+			public const int Game = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int MoneyTree = 2130903042;
+			public const int Main = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Result = 2130903043;
+			public const int MoneyTree = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Result = 2130903044;
 			
 			static Layout()
 			{

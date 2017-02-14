@@ -14,7 +14,6 @@ namespace KBC
     [Activity(Label = "KBC", Icon = "@drawable/icon")]
     public class GameActivity : Activity
     {
-        Random r;
         int answered, currentQuestion, correctOption;
         TextView questionView, cashView;
         Button optionA, optionB, optionC, optionD;
@@ -29,8 +28,6 @@ namespace KBC
 
         void Init()
         {
-            r = new Random(DateTime.Now.Millisecond);
-
             var moneyTreeButton = FindViewById<Button>(Resource.Id.moneyTreeButton);
             moneyTreeButton.Click += ViewMoneyTree;
 
@@ -125,10 +122,12 @@ namespace KBC
 
         void AudiencePoll(object sender, EventArgs e)
         {
+            var i = new Intent(this, typeof(AudiencePollActivity));
+            i.PutExtra(nameof(correctOption), correctOption);
+            StartActivity(i);
+
             audiencePollUsed = true;
             audiencePollButton.SetColor(Color.Red);
-
-            Toast.MakeText(this, options[correctOption - 1].Text, ToastLength.Short).Show();
 
             LifelineState(false);
         }
@@ -173,7 +172,7 @@ namespace KBC
             if (correctOption != 4)
                 list.Add(optionD);
 
-            list.RemoveAt(r.Next(3));
+            list.RemoveAt(Extensions.Random.Next(3));
 
             foreach (var b in list)
                 b.Enabled = false;
@@ -195,7 +194,7 @@ namespace KBC
         {
             if (Index == -1)
             {
-                Index = r.Next(Question.Questions.Length);
+                Index = Extensions.Random.Next(Question.Questions.Length);
 
                 if (answered == 0)
                     questionAskedMediaPlayer.Start();

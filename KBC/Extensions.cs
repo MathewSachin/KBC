@@ -1,5 +1,6 @@
 using Android.Graphics;
 using Android.Widget;
+using System;
 
 namespace KBC
 {
@@ -9,5 +10,7 @@ namespace KBC
         {
             b.Background.SetColorFilter(c, PorterDuff.Mode.SrcIn);
         }
+
+        public static Random Random { get; } = new Random(DateTime.Now.Millisecond);
     }
 }
