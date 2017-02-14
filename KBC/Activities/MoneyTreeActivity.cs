@@ -4,6 +4,7 @@ using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using System.Linq;
 
 namespace KBC
 {
@@ -34,7 +35,7 @@ namespace KBC
                 if (i == answered - 1)
                     b.SetBackgroundColor(Color.Orange);
 
-                if (i == 3 || i == 7 || i == 14)
+                if (Question.SafeLevels.Contains(i))
                     b.SetTextColor(Color.Yellow);
 
                 layout.AddView(b);

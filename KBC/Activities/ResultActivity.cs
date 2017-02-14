@@ -27,13 +27,12 @@ namespace KBC
 
         string GetAmount(int Answered)
         {
-            if (Answered == Question.Amounts.Length)
-                return Question.Amounts[Answered - 1];
-            else if (Answered >= 8)
-                return Question.Amounts[7];
-            else if (Answered >= 4)
-                return Question.Amounts[3];
+            int level = Answered - 1;
 
+            for (int i = Question.SafeLevels.Length - 1; i >= 0; --i)
+                if (level >= Question.SafeLevels[i])
+                    return Question.Amounts[Question.SafeLevels[i]];
+                        
             return "0";
         }
     }

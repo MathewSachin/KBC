@@ -26,8 +26,12 @@ namespace KBC
 
         MediaPlayer questionAskedMediaPlayer, correctAnswerMediaPlayer;
 
+        List<int> asked;
+
         void Init()
         {
+            asked = new List<int>();
+
             var moneyTreeButton = FindViewById<Button>(Resource.Id.moneyTreeButton);
             moneyTreeButton.Click += ViewMoneyTree;
 
@@ -82,6 +86,8 @@ namespace KBC
                 currentQuestion = bundle.GetInt(nameof(currentQuestion));
                 answered = bundle.GetInt(nameof(answered));
 
+                asked.AddRange(bundle.GetIntArray(nameof(asked)));
+
                 ShowQuestion(currentQuestion);
                 
                 fifty50Used = bundle.GetBoolean(nameof(fifty50Used));
@@ -116,6 +122,8 @@ namespace KBC
             outState.PutBoolean(nameof(fifty50Used), fifty50Used);
             outState.PutBoolean(nameof(doubleTipUsed), doubleTipUsed);
             outState.PutBoolean(nameof(audiencePollUsed), audiencePollUsed);
+
+            outState.PutIntArray(nameof(asked), asked.ToArray());
             
             base.OnSaveInstanceState(outState);
         }
@@ -194,7 +202,8 @@ namespace KBC
         {
             if (Index == -1)
             {
-                Index = Extensions.Random.Next(Question.Questions.Length);
+                do Index = Extensions.Random.Next(Question.Questions.Length);
+                while (asked.Contains(Index));
 
                 if (answered == 0)
                     questionAskedMediaPlayer.Start();
@@ -203,6 +212,7 @@ namespace KBC
             UpdateCashView();
 
             currentQuestion = Index;
+            asked.Add(Index);
 
             var q = Question.Questions[Index];
 
