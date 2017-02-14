@@ -61,7 +61,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\MoneyTree.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
