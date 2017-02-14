@@ -6,7 +6,7 @@ using Android.Widget;
 
 namespace KBC
 {
-    [Activity(Label = "KBC", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "KBC", MainLauncher = true, Icon = "@drawable/splash")]
     public class MainActivity : Activity
     {
         MediaPlayer introPlayer;
