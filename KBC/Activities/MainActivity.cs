@@ -44,8 +44,7 @@ namespace KBC
 
         void NewGame(object sender, System.EventArgs e)
         {
-            if (introPlayer.IsPlaying)
-                introPlayer.Stop();
+            introPlayer?.Stop();
 
             var i = new Intent(this, typeof(GameActivity));
             StartActivity(i);            
