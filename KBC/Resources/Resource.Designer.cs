@@ -136,6 +136,9 @@ namespace KBC
 			// aapt resource value: 0x7f080006
 			public const int optionDCent = 2131230726;
 			
+			// aapt resource value: 0x7f080016
+			public const int playAgainButton = 2131230742;
+			
 			// aapt resource value: 0x7f080009
 			public const int questionView = 2131230729;
 			

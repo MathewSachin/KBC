@@ -8,16 +8,24 @@
         android:layout_height="match_parent"
         android:padding="16dp">
         <TextView
+            android:text="Congrats"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="30sp"
             android:paddingBottom="20dp"
             android:id="@+id/resultMessageView" />
         <TextView
+            android:text="Rs. 100"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="25sp"
             android:paddingBottom="20dp"
             android:id="@+id/resultCashView" />
+        <Button
+            android:text="Play Again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/playAgainButton"
+            android:layout_marginTop="40dp" />
     </LinearLayout>
 </ScrollView>

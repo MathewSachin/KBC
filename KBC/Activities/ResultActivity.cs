@@ -1,6 +1,8 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
+using System;
 
 namespace KBC
 {
@@ -23,6 +25,17 @@ namespace KBC
 
             var cashView = FindViewById<TextView>(Resource.Id.resultCashView);
             cashView.Text = "₹" + GetAmount(answered);
+
+            var playAgainButton = FindViewById<Button>(Resource.Id.playAgainButton);
+            playAgainButton.Click += PlayAgain;
+        }
+
+        void PlayAgain(object sender, EventArgs e)
+        {
+            var i = new Intent(this, typeof(GameActivity));
+            StartActivity(i);
+
+            Finish();
         }
 
         string GetAmount(int Answered)
