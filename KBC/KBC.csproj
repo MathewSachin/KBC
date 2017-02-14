@@ -48,13 +48,14 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\AudiencePollActivity.cs" />
+    <Compile Include="Activities\MoneyTreeFragment.cs" />
+    <Compile Include="Activities\AudiencePollFragment.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Activities\GameActivity.cs" />
     <Compile Include="Activities\ResultActivity.cs" />
-    <Compile Include="Activities\MoneyTreeActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

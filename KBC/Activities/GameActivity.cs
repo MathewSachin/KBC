@@ -18,7 +18,7 @@ namespace KBC
         TextView questionView, cashView;
         Button optionA, optionB, optionC, optionD;
         bool doubleTip;
-
+        
         Button[] options;
 
         bool fifty50Used, doubleTipUsed, audiencePollUsed;
@@ -130,9 +130,8 @@ namespace KBC
 
         void AudiencePoll(object sender, EventArgs e)
         {
-            var i = new Intent(this, typeof(AudiencePollActivity));
-            i.PutExtra(nameof(correctOption), correctOption);
-            StartActivity(i);
+            var frag = AudiencePollFragment.Create(correctOption, () => OptionClick(options[correctOption - 1], correctOption));
+            frag.Show(FragmentManager, "AudiencePoll");
 
             audiencePollUsed = true;
             audiencePollButton.SetColor(Color.Red);
@@ -193,9 +192,8 @@ namespace KBC
 
         void ViewMoneyTree(object sender, EventArgs e)
         {
-            var i = new Intent(this, typeof(MoneyTreeActivity));
-            i.PutExtra("Answered", answered);
-            StartActivity(i);
+            var frag = MoneyTreeFragment.Create(answered);
+            frag.Show(FragmentManager, "MoneyTree" + answered);
         }
 
         void ShowQuestion(int Index = -1)
