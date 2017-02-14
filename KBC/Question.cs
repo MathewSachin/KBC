@@ -41,7 +41,7 @@ namespace KBC
             new Question("Douglas Engelbert, who passed away in 2013, is credited as the inventor of which of these products?", "Mobile Phone", "Computer Mouse", "Bluetooth Mouse", "Digital Camera", 2),
             new Question("In 1850, the first experimental electric telegraph line in India was set up between Calcutta and which place?", "Diamond Harbour", "Darjeeling", "Murshidabad", "Dhaka", 1),
             new Question("Which of the following person has not walked on the moon?", "Charles Duke", "James A Lovell", "Alan Bean", "Pete Conrad", 2),
-            new Question("Which team retained the ashes Trophy in 2013", "Australia?", "South Africa", "West Indies", "England", 4),
+            new Question("Which team retained the ashes Trophy in 2013?", "Australia", "South Africa", "West Indies", "England", 4),
             new Question("With which of these cards would you associate the phrase 'Aam Aadmi ka Adhikaar'?", "PAN Card", "Voter ID Card", "AADHAR Card", "Ration Card", 3),
             new Question("With which of these states do Chhattisgarh, Jharkhand and Andhra Pradesh all share their borders?", "Madhya Pradesh", "Odisha", "Bihar", "Uttar Pradesh", 2),
             new Question("The first world championship of what sport is planned to be held in 2017, though the game has been played since 1877?", "Test Cricket", "Rugby Union", "Kabaddi", "Carrom", 1),
@@ -56,7 +56,7 @@ namespace KBC
             new Question("To respect whose word did the five Pandavas marry Draupadi?", "Krishna", "Indra", "Kunti", "Madri", 3),
             new Question("Who is the only Indian to have won a medal in Women's Singles at the World Badminton Championships?", "Jwala Gupta", "P V Sindhu", "Saina Nehwal", "Ashwini Ponnappa", 2),
             new Question("From which country did India buy an aircraft carrier which was renamed as INS Vikramaditya?", "France", "Russia", "England", "Germany", 2),
-            new Question("Which of these freedom fighters was the English language secretary to Mahatma Gandhi for 16 years", "Hansa Mehta", "Rajkumari Amrit Kaur", "Sarojini Naidu", "Sushila Nayyar", 2)
+            new Question("Which of these freedom fighters was the English language secretary to Mahatma Gandhi for 16 years?", "Hansa Mehta", "Rajkumari Amrit Kaur", "Sarojini Naidu", "Sushila Nayyar", 2)
         };
     }
 }

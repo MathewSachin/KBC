@@ -6,17 +6,20 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:paddingTop="40dp">
         <TextView
-            android:text="Cash: ₹0"
+            android:text="₹0"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:textSize="15sp"
-            android:paddingBottom="20dp"
+            android:textSize="35sp"
+            android:gravity="center"
+            android:padding="20dp"
             android:id="@+id/cashView" />
         <TextView
-            android:minHeight="300dp"
+            android:minHeight="250dp"
             android:textSize="30sp"
+            android:paddingTop="60dp"
             android:text="This is a sample question"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -24,7 +27,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:paddingTop="50dp">
             <Button
                 android:id="@+id/optionA"
                 android:layout_weight="1"
@@ -39,7 +43,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:paddingBottom="20dp">
             <Button
                 android:id="@+id/optionC"
                 android:layout_weight="1"
@@ -55,11 +60,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Money Tree"
-            android:id="@+id/moneyTreeButton" />
+            android:id="@+id/moneyTreeButton"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            android:layout_width="match_parent"
+            android:paddingTop="20dp">
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

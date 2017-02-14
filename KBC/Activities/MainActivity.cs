@@ -21,8 +21,25 @@ namespace KBC
             var newGameButton = FindViewById<Button>(Resource.Id.newGameButton);
             newGameButton.Click += NewGame;
 
-            introPlayer = MediaPlayer.Create(this, Resource.Raw.Intro);
-            introPlayer.Start();
+            if (bundle == null)
+            {
+                introPlayer = MediaPlayer.Create(this, Resource.Raw.Intro);
+                introPlayer.Start();
+            }
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            introPlayer?.Stop();
+
+            base.OnSaveInstanceState(outState);
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+
+            introPlayer?.Stop();
         }
 
         void NewGame(object sender, System.EventArgs e)

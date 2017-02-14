@@ -37,6 +37,8 @@ namespace KBC
             questionView = FindViewById<TextView>(Resource.Id.questionView);
             cashView = FindViewById<TextView>(Resource.Id.cashView);
 
+            cashView.SetBackgroundColor(Color.Orange);
+            
             optionA = FindViewById<Button>(Resource.Id.optionA);
             optionB = FindViewById<Button>(Resource.Id.optionB);
             optionC = FindViewById<Button>(Resource.Id.optionC);
@@ -84,9 +86,7 @@ namespace KBC
                 answered = bundle.GetInt(nameof(answered));
 
                 ShowQuestion(currentQuestion);
-
-                UpdateCashView();
-
+                
                 fifty50Used = bundle.GetBoolean(nameof(fifty50Used));
                 doubleTipUsed = bundle.GetBoolean(nameof(doubleTipUsed));
                 audiencePollUsed = bundle.GetBoolean(nameof(audiencePollUsed));
@@ -193,11 +193,15 @@ namespace KBC
 
         void ShowQuestion(int Index = -1)
         {
-            if (answered == 0)
-                questionAskedMediaPlayer.Start();
-
             if (Index == -1)
+            {
                 Index = r.Next(Question.Questions.Length);
+
+                if (answered == 0)
+                    questionAskedMediaPlayer.Start();
+            }
+
+            UpdateCashView();
 
             currentQuestion = Index;
 
@@ -215,7 +219,7 @@ namespace KBC
 
         void UpdateCashView()
         {
-            cashView.Text = $"Cash: ₹{Question.Amounts[answered - 1]}";
+            cashView.Text = $"₹{Question.Amounts[answered]}";
         }
 
         void ResultView()
@@ -241,9 +245,7 @@ namespace KBC
             RunOnUiThread(() =>
             {
                 ResetColor(optionA, optionB, optionC, optionD);
-
-                UpdateCashView();
-                
+                                
                 if (answered == Question.Amounts.Length)
                     ResultView();
                 else
@@ -298,6 +300,10 @@ namespace KBC
                 else
                 {
                     RunOnUiThread(() => b.SetColor(Color.Red));
+
+                    Thread.Sleep(500);
+
+                    RunOnUiThread(() => options[correctOption - 1].SetColor(Color.Green));
 
                     Thread.Sleep(1000);
 
