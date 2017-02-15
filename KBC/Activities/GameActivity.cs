@@ -253,6 +253,12 @@ namespace KBC
         {
             var i = new Intent(this, typeof(ResultActivity));
             i.PutExtra("Answered", answered);
+
+            i.PutExtra(nameof(fifty50Used), fifty50Used);
+            i.PutExtra(nameof(doubleTipUsed), doubleTipUsed);
+            i.PutExtra(nameof(audiencePollUsed), audiencePollUsed);
+            i.PutExtra(nameof(changeQuestionUsed), changeQuestionUsed);
+
             StartActivity(i);
 
             Finish();

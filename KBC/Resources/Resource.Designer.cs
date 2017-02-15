@@ -94,6 +94,9 @@ namespace KBC
 			// aapt resource value: 0x7f080010
 			public const int fifty50Button = 2131230736;
 			
+			// aapt resource value: 0x7f080017
+			public const int lifelinesUsedView = 2131230743;
+			
 			// aapt resource value: 0x7f080014
 			public const int moneyTree = 2131230740;
 			
@@ -139,8 +142,8 @@ namespace KBC
 			// aapt resource value: 0x7f080006
 			public const int optionDCent = 2131230726;
 			
-			// aapt resource value: 0x7f080017
-			public const int playAgainButton = 2131230743;
+			// aapt resource value: 0x7f080018
+			public const int playAgainButton = 2131230744;
 			
 			// aapt resource value: 0x7f080009
 			public const int questionView = 2131230729;

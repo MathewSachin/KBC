@@ -17,8 +17,45 @@ namespace KBC
             SetContentView (Resource.Layout.Result);
 
             var answered = Intent.Extras.GetInt("Answered");
+
+            var lifelinesUsed = 0;
+
+            var fifty50Used = Intent.Extras.GetBoolean("fifty50Used");
+            if (fifty50Used)
+                ++lifelinesUsed;
+
+            var doubleTipUsed = Intent.Extras.GetBoolean("doubleTipUsed");
+            if (doubleTipUsed)
+                ++lifelinesUsed;
+
+            var audiencePollUsed = Intent.Extras.GetBoolean("audiencePollUsed");
+            if (audiencePollUsed)
+                ++lifelinesUsed;
+
+            var changeQuestionUsed = Intent.Extras.GetBoolean("changeQuestionUsed");
+            if (changeQuestionUsed)
+                ++lifelinesUsed;
+
+            if (lifelinesUsed > 0)
+            {
+                var lifelinesView = FindViewById<TextView>(Resource.Id.lifelinesUsedView);
+
+                lifelinesView.Text = "Lifelines Used:\n\n";
+
+                if (fifty50Used)
+                    lifelinesView.Text += "50 50\n";
+
+                if (doubleTipUsed)
+                    lifelinesView.Text += "Double Tip\n";
+
+                if (audiencePollUsed)
+                    lifelinesView.Text += "Audience Poll\n";
+
+                if (changeQuestionUsed)
+                    lifelinesView.Text += "Change Question\n";
+            }
             
-            var message = answered >= 4 ? "Congratulation" : "Better Luck Next Time";
+            var message = answered > Question.SafeLevels[0] ? "Congratulation" : "Better Luck Next Time";
 
             var msgView = FindViewById<TextView>(Resource.Id.resultMessageView);
             msgView.Text = message;
