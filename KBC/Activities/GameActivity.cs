@@ -21,8 +21,8 @@ namespace KBC
         
         Button[] options;
 
-        bool fifty50Used, doubleTipUsed, audiencePollUsed;
-        Button fifty50Button, doubleTipButton, audiencePollButton;
+        bool fifty50Used, doubleTipUsed, audiencePollUsed, changeQuestionUsed;
+        Button fifty50Button, doubleTipButton, audiencePollButton, changeQuestionButton;
 
         MediaPlayer questionAskedMediaPlayer, correctAnswerMediaPlayer;
 
@@ -66,10 +66,13 @@ namespace KBC
             audiencePollButton = FindViewById<Button>(Resource.Id.audiencePollButton);
             audiencePollButton.Click += AudiencePoll;
 
+            changeQuestionButton = FindViewById<Button>(Resource.Id.changeQuestionButton);
+            changeQuestionButton.Click += ChangeQuestion;
+
             questionAskedMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Question);
             correctAnswerMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Correct);
         }
-
+        
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -93,6 +96,7 @@ namespace KBC
                 fifty50Used = bundle.GetBoolean(nameof(fifty50Used));
                 doubleTipUsed = bundle.GetBoolean(nameof(doubleTipUsed));
                 audiencePollUsed = bundle.GetBoolean(nameof(audiencePollUsed));
+                changeQuestionUsed = bundle.GetBoolean(nameof(changeQuestionUsed));
 
                 if (fifty50Used)
                 {
@@ -111,6 +115,12 @@ namespace KBC
                     audiencePollButton.Enabled = false;
                     audiencePollButton.SetColor(Color.Red);
                 }
+
+                if (changeQuestionUsed)
+                {
+                    changeQuestionButton.Enabled = false;
+                    changeQuestionButton.SetColor(Color.Red);
+                }
             }
         }
 
@@ -122,10 +132,21 @@ namespace KBC
             outState.PutBoolean(nameof(fifty50Used), fifty50Used);
             outState.PutBoolean(nameof(doubleTipUsed), doubleTipUsed);
             outState.PutBoolean(nameof(audiencePollUsed), audiencePollUsed);
+            outState.PutBoolean(nameof(changeQuestionUsed), changeQuestionUsed);
 
             outState.PutIntArray(nameof(asked), asked.ToArray());
             
             base.OnSaveInstanceState(outState);
+        }
+
+        void ChangeQuestion(object sender, EventArgs e)
+        {
+            ShowQuestion();
+
+            changeQuestionUsed = true;
+            changeQuestionButton.SetColor(Color.Red);
+
+            LifelineState(true);
         }
 
         void AudiencePoll(object sender, EventArgs e)
@@ -152,17 +173,16 @@ namespace KBC
         void LifelineState(bool Enabled)
         {
             if (!Enabled)
-                fifty50Button.Enabled = doubleTipButton.Enabled = audiencePollButton.Enabled = false;
+                fifty50Button.Enabled = doubleTipButton.Enabled = audiencePollButton.Enabled = changeQuestionButton.Enabled = false;
             else
             {
-                if (!fifty50Used)
-                    fifty50Button.Enabled = true;
+                fifty50Button.Enabled = !fifty50Used;
 
-                if (!doubleTipUsed)
-                    doubleTipButton.Enabled = true;
+                doubleTipButton.Enabled = !doubleTipUsed;
 
-                if (!audiencePollUsed)
-                    audiencePollButton.Enabled = true;
+                audiencePollButton.Enabled = !audiencePollUsed;
+                
+                changeQuestionButton.Enabled = !changeQuestionUsed;
             }
         }
 
