@@ -202,10 +202,7 @@ namespace KBC
 			public const int Correct = 2130968576;
 			
 			// aapt resource value: 0x7f040001
-			public const int Intro = 2130968577;
-			
-			// aapt resource value: 0x7f040002
-			public const int Question = 2130968578;
+			public const int Question = 2130968577;
 			
 			static Raw()
 			{

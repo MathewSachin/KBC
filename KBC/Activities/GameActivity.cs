@@ -23,7 +23,7 @@ namespace KBC
         bool fifty50Used, doubleTipUsed, audiencePollUsed, changeQuestionUsed;
         Button fifty50Button, doubleTipButton, audiencePollButton, changeQuestionButton;
 
-        MediaPlayer questionAskedMediaPlayer, correctAnswerMediaPlayer;
+        MediaPlayer correctAnswerMediaPlayer;
 
         List<int> asked;
 
@@ -71,17 +71,9 @@ namespace KBC
 
             changeQuestionButton = FindViewById<Button>(Resource.Id.changeQuestionButton);
             changeQuestionButton.Click += ChangeQuestion;
-
-            questionAskedMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Question);
-            questionAskedMediaPlayer.Start();
-
-            questionAskedMediaPlayer.Completion += (s, e) =>
-            {
-                questionAskedMediaPlayer.Release();
-                questionAskedMediaPlayer = null;
-            };
-
+            
             correctAnswerMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Correct);
+            correctAnswerMediaPlayer.SetVolume(0.5f, 0.5f);
         }
         
         protected override void OnCreate(Bundle bundle)
