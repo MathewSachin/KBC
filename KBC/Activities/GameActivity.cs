@@ -124,6 +124,18 @@ namespace KBC
             }
         }
 
+        public override void OnBackPressed()
+        {
+            var builder = new AlertDialog.Builder(this);
+
+            builder.SetTitle("Quit")
+                .SetMessage("Are you sure?")
+                .SetPositiveButton("Yes", (s, e) => ResultView(true))
+                .SetNegativeButton("No", (s, e) => { })
+                .Create()
+                .Show();
+        }
+
         protected override void OnSaveInstanceState(Bundle outState)
         {
             outState.PutInt(nameof(currentQuestion), currentQuestion);
@@ -249,10 +261,11 @@ namespace KBC
             cashView.Text = $"₹{Question.Amounts[answered]}";
         }
 
-        void ResultView()
+        void ResultView(bool Quit = false)
         {
             var i = new Intent(this, typeof(ResultActivity));
             i.PutExtra("Answered", answered);
+            i.PutExtra(nameof(Quit), Quit);
 
             i.PutExtra(nameof(fifty50Used), fifty50Used);
             i.PutExtra(nameof(doubleTipUsed), doubleTipUsed);
@@ -340,7 +353,7 @@ namespace KBC
 
                     Thread.Sleep(1000);
 
-                    RunOnUiThread(ResultView);
+                    RunOnUiThread(() => ResultView());
                 }
             }).Start();
         }        

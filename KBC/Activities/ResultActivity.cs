@@ -17,6 +17,7 @@ namespace KBC
             SetContentView (Resource.Layout.Result);
 
             var answered = Intent.Extras.GetInt("Answered");
+            var quit = Intent.Extras.GetBoolean("Quit");
 
             var lifelinesUsed = 0;
 
@@ -55,13 +56,11 @@ namespace KBC
                     lifelinesView.Text += "Change Question\n";
             }
             
-            var message = answered > Question.SafeLevels[0] ? "Congratulation" : "Better Luck Next Time";
-
             var msgView = FindViewById<TextView>(Resource.Id.resultMessageView);
-            msgView.Text = message;
+            msgView.Text = GetMessage(answered, quit);
 
             var cashView = FindViewById<TextView>(Resource.Id.resultCashView);
-            cashView.Text = "₹" + GetAmount(answered);
+            cashView.Text = "₹" + GetAmount(answered, quit);
 
             var playAgainButton = FindViewById<Button>(Resource.Id.playAgainButton);
             playAgainButton.Click += PlayAgain;
@@ -75,10 +74,24 @@ namespace KBC
             Finish();
         }
 
-        string GetAmount(int Answered)
+        string GetMessage(int Answered, bool Quit)
         {
-            int level = Answered - 1;
+            const string pass = "Congratulation",
+                fail = "Better Luck Next Time";
 
+            if (Quit)
+                return Answered > 0 ? pass : fail;
+
+            return Answered > Question.SafeLevels[0] ? pass : fail;
+        }
+
+        string GetAmount(int Answered, bool Quit)
+        {
+            var level = Answered - 1;
+
+            if (Quit)
+                return level == -1 ? "0" : Question.Amounts[level];
+            
             for (int i = Question.SafeLevels.Length - 1; i >= 0; --i)
                 if (level >= Question.SafeLevels[i])
                     return Question.Amounts[Question.SafeLevels[i]];
