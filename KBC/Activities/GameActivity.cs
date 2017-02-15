@@ -27,6 +27,11 @@ namespace KBC
 
         List<int> asked;
 
+        readonly Color OptionDefaultColor = Color.Gray,
+            OptionIndeterminateColor = Color.Gold,
+            OptionCorrectColor = Color.ParseColor("#43a047"),
+            OptionWrongColor = Color.ParseColor("#e53935");
+
         void Init()
         {
             asked = new List<int>();
@@ -35,9 +40,6 @@ namespace KBC
             moneyTreeButton.Click += ViewMoneyTree;
 
             questionView = FindViewById<TextView>(Resource.Id.questionView);
-            cashView = FindViewById<TextView>(Resource.Id.cashView);
-
-            cashView.SetBackgroundColor(Color.Orange);
             
             options = new[] 
             {
@@ -47,11 +49,16 @@ namespace KBC
                 FindViewById<Button>(Resource.Id.optionD)
             };
 
-            for (int i = 0; i < 4; ++i)
-            {
-                options[i].Click += (s, e) => OptionClick(options[i], i + 1);
-                options[i].SetColor(Color.Gray);
-            }
+            options[0].Click += (s, e) => OptionClick(1);
+            options[1].Click += (s, e) => OptionClick(2);
+            options[2].Click += (s, e) => OptionClick(3);
+            options[3].Click += (s, e) => OptionClick(4);
+
+            foreach (var option in options)
+                option.SetColor(OptionDefaultColor);
+
+            cashView = FindViewById<TextView>(Resource.Id.cashView);
+            cashView.SetBackgroundColor(Color.Orange);
 
             fifty50Button = FindViewById<Button>(Resource.Id.fifty50Button);
             fifty50Button.Click += Fifty50;
@@ -97,25 +104,25 @@ namespace KBC
                 if (fifty50Used)
                 {
                     fifty50Button.Enabled = false;
-                    fifty50Button.SetColor(Color.Red);
+                    fifty50Button.SetColor(OptionWrongColor);
                 }
 
                 if (doubleTipUsed)
                 {
                     doubleTipButton.Enabled = false;
-                    doubleTipButton.SetColor(Color.Red);
+                    doubleTipButton.SetColor(OptionWrongColor);
                 }
 
                 if (audiencePollUsed)
                 {
                     audiencePollButton.Enabled = false;
-                    audiencePollButton.SetColor(Color.Red);
+                    audiencePollButton.SetColor(OptionWrongColor);
                 }
 
                 if (changeQuestionUsed)
                 {
                     changeQuestionButton.Enabled = false;
-                    changeQuestionButton.SetColor(Color.Red);
+                    changeQuestionButton.SetColor(OptionWrongColor);
                 }
             }
         }
@@ -152,18 +159,18 @@ namespace KBC
             ShowQuestion();
 
             changeQuestionUsed = true;
-            changeQuestionButton.SetColor(Color.Red);
+            changeQuestionButton.SetColor(OptionWrongColor);
 
             LifelineState(true);
         }
 
         void AudiencePoll(object sender, EventArgs e)
         {
-            var frag = AudiencePollFragment.Create(correctOption, () => OptionClick(options[correctOption - 1], correctOption));
+            var frag = AudiencePollFragment.Create(correctOption, () => OptionClick(correctOption));
             frag.Show(FragmentManager, "AudiencePoll");
 
             audiencePollUsed = true;
-            audiencePollButton.SetColor(Color.Red);
+            audiencePollButton.SetColor(OptionWrongColor);
 
             LifelineState(false);
         }
@@ -173,7 +180,7 @@ namespace KBC
             doubleTip = true;
 
             doubleTipUsed = true;
-            doubleTipButton.SetColor(Color.Red);
+            doubleTipButton.SetColor(OptionWrongColor);
 
             LifelineState(false);
         }
@@ -211,7 +218,7 @@ namespace KBC
             }
             
             fifty50Used = true;
-            fifty50Button.SetColor(Color.Red);
+            fifty50Button.SetColor(OptionWrongColor);
 
             LifelineState(false);
         }
@@ -273,7 +280,7 @@ namespace KBC
         {
             correctAnswerMediaPlayer.Start();
 
-            RunOnUiThread(() => b.SetColor(Color.Green));
+            RunOnUiThread(() => b.SetColor(OptionCorrectColor));
 
             // Money tree gets updated
             ++answered;
@@ -283,7 +290,7 @@ namespace KBC
             RunOnUiThread(() =>
             {
                 foreach (var option in options)
-                    option.SetColor(Color.Gray);
+                    option.SetColor(OptionDefaultColor);
 
                 if (answered == Question.Amounts.Length)
                     ResultView();
@@ -304,14 +311,16 @@ namespace KBC
             });
         }
         
-        void OptionClick(Button b, int Index)
+        void OptionClick(int Index)
         {
+            var b = options[Index - 1];
+
             foreach (var option in options)
                 option.Clickable = false;
             
             LifelineState(false);
 
-            b.SetColor(Color.Gold);
+            b.SetColor(OptionIndeterminateColor);
 
             new Thread(() =>
             {
@@ -323,7 +332,7 @@ namespace KBC
                 {
                     RunOnUiThread(() =>
                     {
-                        b.SetColor(Color.Red);
+                        b.SetColor(OptionWrongColor);
                         
                         foreach (var option in options)
                             option.Clickable = true;
@@ -334,11 +343,11 @@ namespace KBC
                 }
                 else
                 {
-                    RunOnUiThread(() => b.SetColor(Color.Red));
+                    RunOnUiThread(() => b.SetColor(OptionWrongColor));
 
                     Thread.Sleep(500);
 
-                    RunOnUiThread(() => options[correctOption - 1].SetColor(Color.Green));
+                    RunOnUiThread(() => options[correctOption - 1].SetColor(OptionCorrectColor));
 
                     Thread.Sleep(1000);
 

@@ -8,64 +8,16 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:paddingTop="40dp">
-        <TextView
-            android:text="₹0"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:textSize="35sp"
-            android:gravity="center"
-            android:padding="20dp"
-            android:id="@+id/cashView" />
-        <TextView
-            android:minHeight="250dp"
-            android:textSize="30sp"
-            android:paddingTop="60dp"
-            android:text="This is a sample question"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/questionView" />
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingTop="50dp">
-            <Button
-                android:id="@+id/optionA"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent" />
-            <Button
-                android:id="@+id/optionB"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:paddingBottom="20dp">
-            <Button
-                android:id="@+id/optionC"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent" />
-            <Button
-                android:id="@+id/optionD"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent" />
-        </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Money Tree"
-            android:id="@+id/moneyTreeButton"/>
+            android:id="@+id/moneyTreeButton" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:paddingTop="20dp">
+            android:paddingTop="10dp">
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -90,6 +42,63 @@
                 android:text="Change Question"
                 android:layout_weight="1"
                 android:id="@+id/changeQuestionButton" />
+        </LinearLayout>
+        <TextView
+            android:text="₹0"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:textSize="35sp"
+            android:gravity="center"
+            android:padding="20dp"
+            android:id="@+id/cashView" />
+        <TextView
+            android:minHeight="250dp"
+            android:textSize="30sp"
+            android:paddingTop="60dp"
+            android:text="This is a sample question"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/questionView" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingTop="50dp">
+            <Button
+                android:id="@+id/optionA"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:background="@drawable/Button"
+                android:layout_margin="5dp" />
+            <Button
+                android:id="@+id/optionB"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:background="@drawable/Button"
+                android:layout_margin="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingBottom="20dp">
+            <Button
+                android:id="@+id/optionC"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:background="@drawable/Button"
+                android:layout_margin="5dp" />
+            <Button
+                android:id="@+id/optionD"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:background="@drawable/Button"
+                android:layout_margin="5dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
