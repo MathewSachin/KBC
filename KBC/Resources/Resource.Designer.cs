@@ -201,9 +201,6 @@ namespace KBC
 			// aapt resource value: 0x7f040000
 			public const int Correct = 2130968576;
 			
-			// aapt resource value: 0x7f040001
-			public const int Question = 2130968577;
-			
 			static Raw()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
