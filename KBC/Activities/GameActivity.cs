@@ -31,7 +31,7 @@ namespace KBC
             OptionIndeterminateColor = Color.Gold,
             OptionCorrectColor = Color.ParseColor("#43a047"),
             OptionWrongColor = Color.ParseColor("#e53935");
-
+        
         void Init()
         {
             asked = new List<int>();
@@ -73,6 +73,14 @@ namespace KBC
             changeQuestionButton.Click += ChangeQuestion;
 
             questionAskedMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Question);
+            questionAskedMediaPlayer.Start();
+
+            questionAskedMediaPlayer.Completion += (s, e) =>
+            {
+                questionAskedMediaPlayer.Release();
+                questionAskedMediaPlayer = null;
+            };
+
             correctAnswerMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Correct);
         }
         
@@ -235,9 +243,6 @@ namespace KBC
             {
                 do Index = Extensions.Random.Next(Question.Questions.Length);
                 while (asked.Contains(Index));
-
-                if (answered == 0)
-                    questionAskedMediaPlayer.Start();
             }
 
             UpdateCashView();
