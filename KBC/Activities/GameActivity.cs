@@ -47,15 +47,11 @@ namespace KBC
 
             options = new[] { optionA, optionB, optionC, optionD };
 
-            optionA.Click += (s, e) => OptionClick(optionA, 1);
-            optionB.Click += (s, e) => OptionClick(optionB, 2);
-            optionC.Click += (s, e) => OptionClick(optionC, 3);
-            optionD.Click += (s, e) => OptionClick(optionD, 4);
-
-            optionA.SetColor(Color.Gray);
-            optionB.SetColor(Color.Gray);
-            optionC.SetColor(Color.Gray);
-            optionD.SetColor(Color.Gray);
+            for (int i = 0; i < 4; ++i)
+            {
+                options[i].Click += (s, e) => OptionClick(options[i], i + 1);
+                options[i].SetColor(Color.Gray);
+            }
 
             fifty50Button = FindViewById<Button>(Resource.Id.fifty50Button);
             fifty50Button.Click += Fifty50;
@@ -202,15 +198,10 @@ namespace KBC
         {
             var list = new List<Button>();
 
-            if (correctOption != 1)
-                list.Add(optionA);
-            if (correctOption != 2)
-                list.Add(optionB);
-            if (correctOption != 3)
-                list.Add(optionC);
-            if (correctOption != 4)
-                list.Add(optionD);
-
+            for (int i = 1; i <= 4; ++i)
+                if (correctOption != i)
+                    list.Add(options[i - 1]);
+            
             list.RemoveAt(Extensions.Random.Next(3));
 
             foreach (var b in list)
