@@ -242,10 +242,8 @@ namespace KBC
 
             questionView.Text = $"{answered + 1}. {q.Statement}";
 
-            optionA.Text = "A. " + q.OptionA;
-            optionB.Text = "B. " + q.OptionB;
-            optionC.Text = "C. " + q.OptionC;
-            optionD.Text = "D. " + q.OptionD;
+            for (int i = 0; i < 4; ++i)
+                options[i].Text = $"{(char)('A' + i)}. {q.Options[i]}";
 
             correctOption = q.CorrectOption;
         }

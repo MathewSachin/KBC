@@ -6,20 +6,14 @@ namespace KBC
         {
             this.Statement = Statement;
 
-            this.OptionA = OptionA;
-            this.OptionB = OptionB;
-            this.OptionC = OptionC;
-            this.OptionD = OptionD;
-
+            Options = new[] { OptionA, OptionB, OptionC, OptionD };
+            
             this.CorrectOption = CorrectOption;
         }
 
         public string Statement { get; }
 
-        public string OptionA { get; }
-        public string OptionB { get; }
-        public string OptionC { get; }
-        public string OptionD { get; }
+        public string[] Options { get; }
 
         public int CorrectOption { get; }
 
