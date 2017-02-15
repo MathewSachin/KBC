@@ -214,7 +214,10 @@ namespace KBC
             list.RemoveAt(Extensions.Random.Next(3));
 
             foreach (var b in list)
-                b.Enabled = false;
+            {
+                b.Clickable = false;
+                b.Text = "";
+            }
             
             fifty50Used = true;
             fifty50Button.SetColor(Color.Red);
@@ -298,8 +301,12 @@ namespace KBC
                 {
                     ShowQuestion();
 
-                    OptionsState(true);
-                    optionA.Enabled = optionB.Enabled = optionC.Enabled = optionD.Enabled = true;
+                    foreach (var option in options)
+                    {
+                        option.Enabled = true;
+                        option.Clickable = true;
+                    }
+
                     doubleTip = false;
 
                     LifelineState(true);
@@ -313,14 +320,11 @@ namespace KBC
                 b.SetColor(Color.Gray);
         }
         
-        void OptionsState(bool Clickable)
-        {
-            optionA.Clickable = optionB.Clickable = optionC.Clickable = optionD.Clickable = Clickable;
-        }
-
         void OptionClick(Button b, int Index)
         {
-            OptionsState(false);
+            foreach (var option in options)
+                option.Clickable = false;
+            
             LifelineState(false);
 
             b.SetColor(Color.Gold);
@@ -336,8 +340,9 @@ namespace KBC
                     RunOnUiThread(() =>
                     {
                         b.SetColor(Color.Red);
-
-                        OptionsState(true);
+                        
+                        foreach (var option in options)
+                            option.Clickable = true;
 
                         b.Clickable = false;
                         doubleTip = false;
