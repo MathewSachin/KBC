@@ -16,7 +16,6 @@ namespace KBC
     {
         int answered, currentQuestion, correctOption;
         TextView questionView, cashView;
-        Button optionA, optionB, optionC, optionD;
         bool doubleTip;
         
         Button[] options;
@@ -40,12 +39,13 @@ namespace KBC
 
             cashView.SetBackgroundColor(Color.Orange);
             
-            optionA = FindViewById<Button>(Resource.Id.optionA);
-            optionB = FindViewById<Button>(Resource.Id.optionB);
-            optionC = FindViewById<Button>(Resource.Id.optionC);
-            optionD = FindViewById<Button>(Resource.Id.optionD);
-
-            options = new[] { optionA, optionB, optionC, optionD };
+            options = new[] 
+            {
+                FindViewById<Button>(Resource.Id.optionA),
+                FindViewById<Button>(Resource.Id.optionB),
+                FindViewById<Button>(Resource.Id.optionC),
+                FindViewById<Button>(Resource.Id.optionD)
+            };
 
             for (int i = 0; i < 4; ++i)
             {
@@ -282,8 +282,9 @@ namespace KBC
 
             RunOnUiThread(() =>
             {
-                ResetColor(optionA, optionB, optionC, optionD);
-                                
+                foreach (var option in options)
+                    option.SetColor(Color.Gray);
+
                 if (answered == Question.Amounts.Length)
                     ResultView();
                 else
@@ -301,12 +302,6 @@ namespace KBC
                     LifelineState(true);
                 }
             });
-        }
-
-        void ResetColor(params Button[] Buttons)
-        {
-            foreach (var b in Buttons)
-                b.SetColor(Color.Gray);
         }
         
         void OptionClick(Button b, int Index)
