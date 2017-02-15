@@ -50,6 +50,8 @@ namespace KBC
 
                 if (Question.SafeLevels.Contains(i))
                     b.SetTextColor(Color.Yellow);
+                else if (i < answered - 1)
+                    b.SetTextColor(Color.LightGreen);
 
                 layout.AddView(b);
             }
