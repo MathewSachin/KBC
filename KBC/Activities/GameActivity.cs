@@ -234,7 +234,7 @@ namespace KBC
 
             var q = Question.Questions[Index];
 
-            questionView.Text = q.Statement;
+            questionView.Text = $"{answered + 1}. {q.Statement}";
 
             optionA.Text = "A. " + q.OptionA;
             optionB.Text = "B. " + q.OptionB;
