@@ -27,7 +27,7 @@ namespace KBC
 
         List<int> askedEasy, askedMedium;
 
-        readonly Color OptionDefaultColor = Color.Gray,
+        readonly Color OptionDefaultColor = Color.ParseColor("#424242"),
             OptionIndeterminateColor = Color.Gold,
             OptionCorrectColor = Color.ParseColor("#43a047"),
             OptionWrongColor = Color.ParseColor("#e53935");
