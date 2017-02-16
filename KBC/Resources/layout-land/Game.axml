@@ -13,14 +13,26 @@
             android:padding="16dp"
             android:paddingTop="40dp"
             android:layout_weight="1">
+          <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/timerLayout">
             <TextView
                 android:text="30"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:id="@+id/timerView"/>
+                android:layout_centerVertical="true"
+                android:id="@+id/timerView" />
+            <ProgressBar android:indeterminate="true"
+                         android:layout_centerInParent="true"
+                         android:indeterminateOnly="true"
+                         android:id="@+id/timerProgress"
+                         android:layout_height="wrap_content"
+                         android:layout_width="wrap_content"/>
+          </RelativeLayout>
             <TextView
                 android:textSize="30sp"
                 android:text="This is a sample question"

@@ -17,6 +17,8 @@ namespace KBC
         #region Fields
         int answered, currentQuestion, correctOption, timeLeft;
         TextView questionView, cashView, timerView;
+        RelativeLayout timerLayout;
+        ProgressBar timerProgress;
         bool doubleTip;
         
         Button[] options;
@@ -45,7 +47,10 @@ namespace KBC
             moneyTreeButton.Click += ViewMoneyTree;
 
             questionView = FindViewById<TextView>(Resource.Id.questionView);
+
             timerView = FindViewById<TextView>(Resource.Id.timerView);
+            timerLayout = FindViewById<RelativeLayout>(Resource.Id.timerLayout);
+            timerProgress = FindViewById<ProgressBar>(Resource.Id.timerProgress);
             
             options = new[] 
             {
@@ -254,7 +259,7 @@ namespace KBC
         {
             if (answered > Question.SafeLevels[1])
             {
-                timerView.Visibility = ViewStates.Gone;
+                timerLayout.Visibility = ViewStates.Gone;
                 return;
             }
 
@@ -262,13 +267,21 @@ namespace KBC
                 timeLeft = answered <= Question.SafeLevels[0] ? 31 : 61;
 
             timer = new CountDown(timeLeft * 1000, 1000);
-            timer.Tick += () => timerView.Text = (--timeLeft).ToString();
+            timer.Tick += () =>
+            {
+                timerView.Text = (--timeLeft).ToString();
+
+                if (timeLeft <= 10)
+                    timerProgress.IndeterminateDrawable.SetColorFilter(Color.Red, PorterDuff.Mode.SrcIn);
+            };
             timer.Finish += () => ResultView(ResultType.TimeOut);
             timer.Start();
         }
 
         void ShowQuestion(int Index = -1)
         {
+            timerProgress.IndeterminateDrawable.SetColorFilter(Color.Gold, PorterDuff.Mode.SrcIn);
+
             if (answered > Question.SafeLevels[1])
                 changeQuestionButton.Visibility = ViewStates.Visible;
 
@@ -306,6 +319,8 @@ namespace KBC
 
         void ResultView(ResultType ResultType)
         {
+            timer?.Cancel();
+
             var i = new Intent(this, typeof(ResultActivity));
             i.PutExtra("Answered", answered);
             i.PutExtra(nameof(ResultType), (int)ResultType);
