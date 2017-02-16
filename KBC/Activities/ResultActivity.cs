@@ -17,7 +17,7 @@ namespace KBC
             SetContentView (Resource.Layout.Result);
 
             var answered = Intent.Extras.GetInt("Answered");
-            var quit = Intent.Extras.GetBoolean("Quit");
+            var resultType = (ResultType)Intent.Extras.GetInt(nameof(ResultType));
 
             var lifelinesUsed = 0;
 
@@ -57,10 +57,10 @@ namespace KBC
             }
             
             var msgView = FindViewById<TextView>(Resource.Id.resultMessageView);
-            msgView.Text = GetMessage(answered, quit);
+            msgView.Text = GetMessage(answered, resultType);
 
             var cashView = FindViewById<TextView>(Resource.Id.resultCashView);
-            cashView.Text = "₹" + GetAmount(answered, quit);
+            cashView.Text = "₹" + GetAmount(answered, resultType == ResultType.Quit);
 
             var playAgainButton = FindViewById<Button>(Resource.Id.playAgainButton);
             playAgainButton.Click += PlayAgain;
@@ -74,15 +74,23 @@ namespace KBC
             Finish();
         }
 
-        string GetMessage(int Answered, bool Quit)
+        string GetMessage(int Answered, ResultType ResultType)
         {
-            const string pass = "Congratulation",
-                fail = "Better Luck Next Time";
+            switch (ResultType)
+            {
+                case ResultType.Quit:
+                    return "You Quit";
 
-            if (Quit)
-                return Answered > 0 ? pass : fail;
+                case ResultType.TimeOut:
+                    return "Timeout";
 
-            return Answered > Question.SafeLevels[0] ? pass : fail;
+                case ResultType.Win:
+                    return "Congratulations";
+
+                default:
+                case ResultType.WrongAnswer:
+                    return "Wrong Answer";
+            }
         }
 
         string GetAmount(int Answered, bool Quit)

@@ -41,6 +41,7 @@
                 android:layout_height="match_parent"
                 android:text="Change Question"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:id="@+id/changeQuestionButton" />
         </LinearLayout>
         <TextView
@@ -52,6 +53,14 @@
             android:gravity="center"
             android:padding="20dp"
             android:id="@+id/cashView" />
+        <TextView
+            android:text="30"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/timerView"/>
         <TextView
             android:textSize="30sp"
             android:paddingTop="60dp"

@@ -14,8 +14,9 @@ namespace KBC
     [Activity(Label = "KBC")]
     public class GameActivity : Activity
     {
-        int answered, currentQuestion, correctOption;
-        TextView questionView, cashView;
+        #region Fields
+        int answered, currentQuestion, correctOption, timeLeft;
+        TextView questionView, cashView, timerView;
         bool doubleTip;
         
         Button[] options;
@@ -31,7 +32,10 @@ namespace KBC
             OptionIndeterminateColor = Color.Gold,
             OptionCorrectColor = Color.ParseColor("#43a047"),
             OptionWrongColor = Color.ParseColor("#e53935");
-        
+
+        CountDown timer;
+        #endregion
+
         void Init()
         {
             askedEasy = new List<int>();
@@ -41,6 +45,7 @@ namespace KBC
             moneyTreeButton.Click += ViewMoneyTree;
 
             questionView = FindViewById<TextView>(Resource.Id.questionView);
+            timerView = FindViewById<TextView>(Resource.Id.timerView);
             
             options = new[] 
             {
@@ -92,6 +97,7 @@ namespace KBC
             {
                 currentQuestion = bundle.GetInt(nameof(currentQuestion));
                 answered = bundle.GetInt(nameof(answered));
+                timeLeft = bundle.GetInt(nameof(timeLeft));
 
                 askedEasy.AddRange(bundle.GetIntArray(nameof(askedEasy)));
                 askedMedium.AddRange(bundle.GetIntArray(nameof(askedMedium)));
@@ -135,7 +141,7 @@ namespace KBC
 
             builder.SetTitle("Quit")
                 .SetMessage("Are you sure?")
-                .SetPositiveButton("Yes", (s, e) => ResultView(true))
+                .SetPositiveButton("Yes", (s, e) => ResultView(ResultType.Quit))
                 .SetNegativeButton("No", (s, e) => { })
                 .Create()
                 .Show();
@@ -143,8 +149,11 @@ namespace KBC
 
         protected override void OnSaveInstanceState(Bundle outState)
         {
+            timer?.Cancel();
+
             outState.PutInt(nameof(currentQuestion), currentQuestion);
             outState.PutInt(nameof(answered), answered);
+            outState.PutInt(nameof(timeLeft), timeLeft);
 
             outState.PutBoolean(nameof(fifty50Used), fifty50Used);
             outState.PutBoolean(nameof(doubleTipUsed), doubleTipUsed);
@@ -241,14 +250,36 @@ namespace KBC
             return easy ? Questions.Easy : Questions.Medium;
         }
 
+        void InitTimer()
+        {
+            if (answered > Question.SafeLevels[1])
+            {
+                timerView.Visibility = ViewStates.Gone;
+                return;
+            }
+
+            if (timeLeft == -1)
+                timeLeft = answered <= Question.SafeLevels[0] ? 31 : 61;
+
+            timer = new CountDown(timeLeft * 1000, 1000);
+            timer.Tick += () => timerView.Text = (--timeLeft).ToString();
+            timer.Finish += () => ResultView(ResultType.TimeOut);
+            timer.Start();
+        }
+
         void ShowQuestion(int Index = -1)
         {
+            if (answered > Question.SafeLevels[1])
+                changeQuestionButton.Visibility = ViewStates.Visible;
+
             var bank = GetQuestionBank(out var asked);
 
             if (Index == -1)
             {
                 do Index = Extensions.Random.Next(bank.Length);
                 while (asked.Contains(Index));
+
+                timeLeft = -1;
             }
 
             UpdateCashView();
@@ -264,6 +295,8 @@ namespace KBC
                 options[i].Text = $"{(char)('A' + i)}. {q.Options[i]}";
 
             correctOption = q.CorrectOption;
+                        
+            InitTimer();
         }
 
         void UpdateCashView()
@@ -271,11 +304,11 @@ namespace KBC
             cashView.Text = $"₹{Question.Amounts[answered]}";
         }
 
-        void ResultView(bool Quit = false)
+        void ResultView(ResultType ResultType)
         {
             var i = new Intent(this, typeof(ResultActivity));
             i.PutExtra("Answered", answered);
-            i.PutExtra(nameof(Quit), Quit);
+            i.PutExtra(nameof(ResultType), (int)ResultType);
 
             i.PutExtra(nameof(fifty50Used), fifty50Used);
             i.PutExtra(nameof(doubleTipUsed), doubleTipUsed);
@@ -304,7 +337,7 @@ namespace KBC
                     option.SetColor(OptionDefaultColor);
 
                 if (answered == Question.Amounts.Length)
-                    ResultView();
+                    ResultView(ResultType.Win);
                 else
                 {
                     ShowQuestion();
@@ -324,6 +357,8 @@ namespace KBC
         
         void OptionClick(int Index)
         {
+            timer?.Cancel();
+            
             var b = options[Index - 1];
 
             foreach (var option in options)
@@ -362,7 +397,7 @@ namespace KBC
 
                     Thread.Sleep(1000);
 
-                    RunOnUiThread(() => ResultView());
+                    RunOnUiThread(() => ResultView(ResultType.WrongAnswer));
                 }
             }).Start();
         }        
