@@ -25,7 +25,7 @@ namespace KBC
 
         MediaPlayer correctAnswerMediaPlayer;
 
-        List<int> asked;
+        List<int> askedEasy, askedMedium;
 
         readonly Color OptionDefaultColor = Color.Gray,
             OptionIndeterminateColor = Color.Gold,
@@ -34,7 +34,8 @@ namespace KBC
         
         void Init()
         {
-            asked = new List<int>();
+            askedEasy = new List<int>();
+            askedMedium = new List<int>();
 
             var moneyTreeButton = FindViewById<Button>(Resource.Id.moneyTreeButton);
             moneyTreeButton.Click += ViewMoneyTree;
@@ -92,7 +93,8 @@ namespace KBC
                 currentQuestion = bundle.GetInt(nameof(currentQuestion));
                 answered = bundle.GetInt(nameof(answered));
 
-                asked.AddRange(bundle.GetIntArray(nameof(asked)));
+                askedEasy.AddRange(bundle.GetIntArray(nameof(askedEasy)));
+                askedMedium.AddRange(bundle.GetIntArray(nameof(askedMedium)));
 
                 ShowQuestion(currentQuestion);
                 
@@ -149,8 +151,9 @@ namespace KBC
             outState.PutBoolean(nameof(audiencePollUsed), audiencePollUsed);
             outState.PutBoolean(nameof(changeQuestionUsed), changeQuestionUsed);
 
-            outState.PutIntArray(nameof(asked), asked.ToArray());
-            
+            outState.PutIntArray(nameof(askedEasy), askedEasy.ToArray());
+            outState.PutIntArray(nameof(askedMedium), askedMedium.ToArray());
+
             base.OnSaveInstanceState(outState);
         }
 
@@ -229,11 +232,22 @@ namespace KBC
             frag.Show(FragmentManager, "MoneyTree" + answered);
         }
 
+        Question[] GetQuestionBank(out List<int> Asked)
+        {
+            var easy = answered <= Question.SafeLevels[0];
+
+            Asked = easy ? askedEasy : askedMedium;
+
+            return easy ? Questions.Easy : Questions.Medium;
+        }
+
         void ShowQuestion(int Index = -1)
         {
+            var bank = GetQuestionBank(out var asked);
+
             if (Index == -1)
             {
-                do Index = Extensions.Random.Next(Question.Questions.Length);
+                do Index = Extensions.Random.Next(bank.Length);
                 while (asked.Contains(Index));
             }
 
@@ -242,7 +256,7 @@ namespace KBC
             currentQuestion = Index;
             asked.Add(Index);
 
-            var q = Question.Questions[Index];
+            var q = bank[Index];
 
             questionView.Text = $"{answered + 1}. {q.Statement}";
 

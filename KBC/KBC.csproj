@@ -58,6 +58,7 @@
     <Compile Include="Activities\ResultActivity.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="Questions.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
