@@ -5,7 +5,7 @@ using Android.Widget;
 
 namespace KBC
 {
-    [Activity(Label = "KBC", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "KBC", MainLauncher = true)]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

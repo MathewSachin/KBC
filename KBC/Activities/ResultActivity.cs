@@ -6,7 +6,7 @@ using System;
 
 namespace KBC
 {
-    [Activity(Label = "KBC", Icon = "@drawable/icon")]
+    [Activity(Label = "KBC")]
     public class ResultActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

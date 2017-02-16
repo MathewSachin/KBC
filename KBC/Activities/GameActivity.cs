@@ -11,7 +11,7 @@ using Android.Media;
 
 namespace KBC
 {
-    [Activity(Label = "KBC", Icon = "@drawable/icon")]
+    [Activity(Label = "KBC")]
     public class GameActivity : Activity
     {
         int answered, currentQuestion, correctOption;
