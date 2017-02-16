@@ -22,6 +22,13 @@ namespace KBC
             new Question("In the human body, what makes the pupil of an eye contract or dilate?", "Hunger", "Thirst", "Light", "Sound", 3),
             new Question("Which of these sportsmen started his career as a travelling ticket examiner with Indian Railways?", "Bhuvneshwar Kumar", "Shikhar Dhawan", "Ravinder Jadeja", "Mahendra Singh Dhoni", 4),
             new Question("The increased level of which of these causes more humidity in the air?", "Dust", "Water vapour", "Smoke", "Sunlight", 2),
+            new Question("Which of these is not a type of vitamin", "Vitmain A", "Vitamin X", "Vitamin E", "Vitamin K", 2),
+            new Question("The newborn of which of these mammals weighs the heaviest?", "Blue Whale", "African Elephant", "Hippopotamus", "Giant Panda", 1),
+            new Question("Which one of these states is the largest in area?", "Assam", "Arunachal Pradesh", "Punjab", "Haryana", 2),
+            new Question("In geometry, if a shape has only three sides namely A, B and C, then what shape would that be?", "Rectangle", "Square", "Triangle", "Pentagon", 3),
+            new Question("Which of these is not a computer operating system?", "Apple OS X", "Linux", "Windows 8", "Adobe Photoshop", 4),
+            new Question("Which of these is not among the four Vedas?", "Yajur", "Ayurved", "Rig", "Sama", 2),
+            new Question("Which vitamin helps with blood clothing", "A", "B", "C", "K", 4),
         };
 
         public static Question[] Medium { get; } =
@@ -57,6 +64,26 @@ namespace KBC
             new Question("Who is the first women amputee in the world to summit Mount Everest?", "Tashi Malik", "Raha Moharrak", "Samina Baig", "Arunima Sinha", 4),
             new Question("The tomb of which Governer-General of India is located in Ghazipur in Uttar Pradesh?", "Sir John Shore", "Lord Curzon", "Lord Cornwallis", "Lord Chelmsford", 3),
             new Question("In Which of these regions would you find the town of Kishtwar?", "Jammu", "Vidarbha", "Saurashtra", "Bundelkhand", 1),
+            new Question("What disease, ascribed to a deficiency of vitamin B1, gets its name from a Sinhalese word for 'weakness'?", "Anaemia", "Riboflavin", "Beriberi", "Kala-azar", 3),
+            new Question("In the year 2013, Which of these players was given the Rajiv Gandhi Khel Ratna award?", "Virat Kohli", "Ronjon Sodhi", "M. S. Dhoni", "Sachin Tendulkar", 2),
+            new Question("To what post was P Sathasivam appointed in July 2013?", "CBI Director", "Chief Justice of India", "Chief Election Commissioner", "National Security Advisor", 2),
+            new Question("Which sportsman's 108th birth anniversary was celebrated on 29 Aug 2013?", "Dhyan Chand", "Ranjitsinhji", "C K Nayudu", "I A K Pataudi", 1),
+            new Question("What was the code name of the operation by IPKF to take control of Jaffna from the LTTE in 1987?", "Operation Cyclone", "Operation Meghdoot", "Operation Cactus", "Operator Pawan", 4),
+            new Question("Which of these cities is not named after its founder or a dynasty?", "Bikaner", "Ludhiana", "Khajuraho", "Jodhpur", 3),
+            new Question("Who is the youngest person ever to win a Nobel Prize?", "Lawrence Bragg", "Tsung-Dao Lee", "Werner Heisenberg", "Cal Anderson", 1),
+            new Question("Which of these creatures does not have both the male and female reproductive organs in the same body (Hermaphrodites)?", "Earthworm", "Snail", "Black Sea Bass", "Termite", 4),
+            new Question("Which of these parties broke away from the NDA in June 2013, after a 17-year long alliance?", "Janata Dal (S)", "Telugu Desam Party", "Janata Dal (United)", "Biju Janata Dal", 3),
+            new Question("Which poem are these lines from: 'Nari tum keval Shraddha ho, Vishwas-rajat-nag- pagtal mein, Piyush-srot-si baha karo, Jivan ke sunder samtal hein'?", "Aansu", "Prem Pathik", "Kaanan Kusum", "Kamayani", 4),
+            new Question("Which is the only country, apart from India, where one can find the Indian rhinoceros in its natural Habitat?", "Bangaldesh", "Nepal", "China", "Sri Lanka", 2),
+            new Question("What type of naval vehicle is the INS Sindhurakshak?", "Destroyer", "Submarine", "Aircraft Carrier", "Patrol Vehicle", 2),
+            new Question("Which place of worship is located between the Nar and Narayan mountains?", "Kedarnath", "Badrinath", "Amarnath Cave", "Vaishno Devi", 2),
+            new Question("In which city was Vasco Da Gama first buried?", "Calicut", "Diu", "Vasco Da Gama", "Cochin", 4),
+            new Question("Which of these Indian cricketers are brothers?", "Irfan and Yusuf Pathan", "Ravindra and Ajay Jadeja", "Bhuvneshwar and Vinay Kumar", "Ishant and Rohit Sharma", 1),
+            new Question("What is the name of the dancing form of Lord Shiva that gained prominence in India during the Chola period?", "Rudra", "Nataraja", "Ardhanarishwara", "Bhairava", 2),
+            new Question("In which district of Chhattisgarh did Maoists attack a convoy of Congress leaders on 25 May 2013?", "Sukma", "Bastar", "Dantewada", "Mahasamund", 2),
+            new Question("Which of these personalities has also served as Deputy prime Minister of India?", "Lal Bahadur Shastri", "L K Advani", "Gulzarilal nanda", "Arjun Singh", 2),
+            new Question("What name was given to the operation by the Indian Army to rescue stranded travellers from Uttarakhand during the 2013 floods?", "Operation Sukun", "Operation Asha", "Operation Flood", "Operation Surya Hope", 4),
+            new Question("What is India's first ingeniously developed passenger car?", "Maruti 800", "Tata Indica", "Premier Padmini", "Ambassador", 2),
         };
     }
 }
