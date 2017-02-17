@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\MoneyTreeFragment.cs" />
-    <Compile Include="Activities\MoneyTreeDialogFragment.cs" />
     <Compile Include="Activities\AudiencePollDialogFragment.cs" />
     <Compile Include="CountDown.cs" />
     <Compile Include="Extensions.cs" />

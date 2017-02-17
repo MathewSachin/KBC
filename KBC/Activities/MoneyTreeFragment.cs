@@ -8,39 +8,35 @@ using System.Linq;
 
 namespace KBC
 {
-    public class MoneyTreeFragment : Fragment
+    public class MoneyTreeFragment : DialogFragment
     {
-        static MoneyTreeFragment _sharedInstance;
-
         public static MoneyTreeFragment Create(int Answered)
         {
-            if (_sharedInstance == null)
-                _sharedInstance = new MoneyTreeFragment();
-
+            var f = new MoneyTreeFragment();
+     
             var args = new Bundle();
             args.PutInt(nameof(Answered), Answered);
-            _sharedInstance.Arguments = args;
+            f.Arguments = args;
             
-            return _sharedInstance;
+            return f;
         }
 
         LinearLayout layout;
-
+        
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            if (container == null)
-                return null;
-
             var scroller = new ScrollView(Activity);
             layout = new LinearLayout(Activity)
             {
                 Orientation = Orientation.Vertical
             };
 
+            layout.SetPadding(16, 16, 16, 16);
+
             scroller.AddView(layout);
                                  
             var answered = Arguments.GetInt("Answered");
-                        
+
             for (int i = Question.Amounts.Length - 1; i >= 0; --i)
             {
                 var b = new TextView(Activity)

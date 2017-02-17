@@ -267,8 +267,8 @@ namespace KBC
 
         void ViewMoneyTree(object sender, EventArgs e)
         {
-            var frag = MoneyTreeDialogFragment.Create(answered);
-            frag.Show(FragmentManager, "MoneyTree" + answered);
+            var frag = MoneyTreeFragment.Create(answered);
+            frag.Show(FragmentManager, "MoneyTree");
         }
 
         Question[] GetQuestionBank(out List<int> Asked)
