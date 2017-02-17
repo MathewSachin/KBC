@@ -17,7 +17,7 @@ namespace KBC
             var args = new Bundle();
             args.PutInt(nameof(Answered), Answered);
             f.Arguments = args;
-            
+                        
             return f;
         }
 
@@ -25,13 +25,16 @@ namespace KBC
         
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            Dialog?.SetTitle("Money Tree");
+            
             var scroller = new ScrollView(Activity);
             layout = new LinearLayout(Activity)
             {
                 Orientation = Orientation.Vertical
             };
 
-            layout.SetPadding(16, 16, 16, 16);
+            if (Dialog != null)
+                layout.SetPadding(25, 25, 25, 25);
 
             scroller.AddView(layout);
                                  
@@ -46,9 +49,8 @@ namespace KBC
                     LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent),
                     TextSize = 20
                 };
-                
-                if (i == answered)
-                    b.SetBackgroundColor(Color.Orange);
+
+                b.SetBackgroundColor(i == answered ? Color.Orange : Color.Transparent);
 
                 if (Question.SafeLevels.Contains(i))
                     b.SetTextColor(Color.Yellow);

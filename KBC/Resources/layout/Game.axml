@@ -57,7 +57,6 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
             android:id="@+id/timerLayout">
             <TextView
                 android:text="30"
@@ -80,6 +79,7 @@
             android:text="This is a sample question"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
             android:id="@+id/questionView" />
         <LinearLayout
             android:orientation="vertical"
