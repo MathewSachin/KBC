@@ -16,7 +16,7 @@ namespace KBC
     {
         #region Fields
         int answered, currentQuestion, correctOption, timeLeft;
-        TextView questionView, cashView, timerView;
+        TextView questionView, timerView;
         RelativeLayout timerLayout;
         ProgressBar timerProgress;
         bool doubleTip;
@@ -24,7 +24,7 @@ namespace KBC
         Button[] options;
 
         bool fifty50Used, doubleTipUsed, audiencePollUsed, changeQuestionUsed;
-        Button fifty50Button, doubleTipButton, audiencePollButton, changeQuestionButton;
+        Button fifty50Button, doubleTipButton, audiencePollButton, changeQuestionButton, cashView;
 
         MediaPlayer correctAnswerMediaPlayer;
 
@@ -36,20 +36,13 @@ namespace KBC
             OptionWrongColor = Color.ParseColor("#e53935");
 
         CountDown timer;
-
-        bool moneyTreeFragment;
         #endregion
 
         void Init()
         {
             askedEasy = new List<int>();
             askedMedium = new List<int>();
-
-            var moneyTreeButton = FindViewById<Button>(Resource.Id.moneyTreeButton);
-            if (moneyTreeButton != null)
-                moneyTreeButton.Click += ViewMoneyTree;
-            else moneyTreeFragment = true;
-            
+                        
             questionView = FindViewById<TextView>(Resource.Id.questionView);
 
             timerView = FindViewById<TextView>(Resource.Id.timerView);
@@ -72,8 +65,10 @@ namespace KBC
             foreach (var option in options)
                 option.SetColor(OptionDefaultColor);
 
-            cashView = FindViewById<TextView>(Resource.Id.cashView);
-            cashView?.SetBackgroundColor(Color.Orange);
+            cashView = FindViewById<Button>(Resource.Id.cashView);
+            if (cashView != null)
+                cashView.Click += ViewMoneyTree;
+
 
             fifty50Button = FindViewById<Button>(Resource.Id.fifty50Button);
             fifty50Button.Click += Fifty50;
@@ -161,7 +156,7 @@ namespace KBC
                 }
             }
 
-            if (moneyTreeFragment)
+            if (cashView == null)
                 InitMoneyTreeFragment();
         }
 

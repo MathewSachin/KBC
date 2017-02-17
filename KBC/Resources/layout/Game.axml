@@ -8,11 +8,6 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:paddingTop="40dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View Money Tree"
-            android:id="@+id/moneyTreeButton" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -44,7 +39,7 @@
                 android:visibility="gone"
                 android:id="@+id/changeQuestionButton" />
         </LinearLayout>
-        <TextView
+        <Button
             android:text="₹0"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -52,7 +47,8 @@
             android:textSize="35sp"
             android:gravity="center"
             android:padding="20dp"
-            android:id="@+id/cashView" />
+            android:id="@+id/cashView"
+            android:backgroundTint="#ffffd700" />
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
