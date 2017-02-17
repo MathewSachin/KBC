@@ -81,9 +81,15 @@ namespace KBC
 
             changeQuestionButton = FindViewById<Button>(Resource.Id.changeQuestionButton);
             changeQuestionButton.Click += ChangeQuestion;
-            
-            correctAnswerMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Correct);
-            correctAnswerMediaPlayer.SetVolume(0.5f, 0.5f);
+
+            var settings = GetSharedPreferences("Preferences", 0);
+            var playSounds = settings.GetBoolean("playSounds", false);
+
+            if (playSounds)
+            {
+                correctAnswerMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Correct);
+                correctAnswerMediaPlayer.SetVolume(0.5f, 0.5f);
+            }
         }
         
         void InitMoneyTreeFragment()
@@ -358,7 +364,7 @@ namespace KBC
 
         void AfterCorrectAnswer(Button b)
         {
-            correctAnswerMediaPlayer.Start();
+            correctAnswerMediaPlayer?.Start();
 
             RunOnUiThread(() => b.SetColor(OptionCorrectColor));
             

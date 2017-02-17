@@ -43,16 +43,16 @@
             android:text="₹0"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:textSize="35sp"
             android:gravity="center"
             android:padding="20dp"
             android:id="@+id/cashView"
-            android:backgroundTint="#ffffd700" />
+            android:backgroundTint="#ffffd700"
+            android:layout_marginBottom="10dp" />
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
             android:id="@+id/timerLayout">
             <TextView
                 android:text="30"
@@ -75,13 +75,13 @@
             android:text="This is a sample question"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/questionView" />
+            android:id="@+id/questionView"
+            android:layout_marginTop="10dp" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:paddingTop="50dp">
+            android:paddingTop="40dp">
             <Button
                 android:id="@+id/optionA"
                 android:layout_height="match_parent"

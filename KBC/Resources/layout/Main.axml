@@ -23,7 +23,6 @@
             android:text="Play Sounds"
             android:id="@+id/playSoundsCheck"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:visibility="gone" />
+            android:layout_gravity="center" />
     </LinearLayout>
 </ScrollView>
