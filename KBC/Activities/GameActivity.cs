@@ -36,6 +36,8 @@ namespace KBC
             OptionWrongColor = Color.ParseColor("#e53935");
 
         CountDown timer;
+
+        bool moneyTreeFragment;
         #endregion
 
         void Init()
@@ -44,8 +46,10 @@ namespace KBC
             askedMedium = new List<int>();
 
             var moneyTreeButton = FindViewById<Button>(Resource.Id.moneyTreeButton);
-            moneyTreeButton.Click += ViewMoneyTree;
-
+            if (moneyTreeButton != null)
+                moneyTreeButton.Click += ViewMoneyTree;
+            else moneyTreeFragment = true;
+            
             questionView = FindViewById<TextView>(Resource.Id.questionView);
 
             timerView = FindViewById<TextView>(Resource.Id.timerView);
@@ -69,7 +73,7 @@ namespace KBC
                 option.SetColor(OptionDefaultColor);
 
             cashView = FindViewById<TextView>(Resource.Id.cashView);
-            cashView.SetBackgroundColor(Color.Orange);
+            cashView?.SetBackgroundColor(Color.Orange);
 
             fifty50Button = FindViewById<Button>(Resource.Id.fifty50Button);
             fifty50Button.Click += Fifty50;
@@ -87,6 +91,24 @@ namespace KBC
             correctAnswerMediaPlayer.SetVolume(0.5f, 0.5f);
         }
         
+        void InitMoneyTreeFragment()
+        {
+            var moneyTreeTx = FragmentManager.BeginTransaction();
+            var moneyTreeFragment = MoneyTreeFragment.Create(answered);
+
+            moneyTreeTx.Add(Resource.Id.moneyTeeContainer, moneyTreeFragment);
+
+            moneyTreeTx.Commit();
+        }
+
+        void UpdateMoneyTreeFragment()
+        {
+            var moneyTreeFragment = FragmentManager.FindFragmentById<MoneyTreeFragment>(Resource.Id.moneyTeeContainer);
+
+            if (moneyTreeFragment != null)
+                moneyTreeFragment.Update(answered);
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -138,6 +160,9 @@ namespace KBC
                     changeQuestionButton.SetColor(OptionWrongColor);
                 }
             }
+
+            if (moneyTreeFragment)
+                InitMoneyTreeFragment();
         }
 
         public override void OnBackPressed()
@@ -183,7 +208,7 @@ namespace KBC
 
         void AudiencePoll(object sender, EventArgs e)
         {
-            var frag = AudiencePollFragment.Create(correctOption, () => OptionClick(correctOption));
+            var frag = AudiencePollDialogFragment.Create(correctOption, () => OptionClick(correctOption));
             frag.Show(FragmentManager, "AudiencePoll");
 
             audiencePollUsed = true;
@@ -242,7 +267,7 @@ namespace KBC
 
         void ViewMoneyTree(object sender, EventArgs e)
         {
-            var frag = MoneyTreeFragment.Create(answered);
+            var frag = MoneyTreeDialogFragment.Create(answered);
             frag.Show(FragmentManager, "MoneyTree" + answered);
         }
 
@@ -314,7 +339,8 @@ namespace KBC
 
         void UpdateCashView()
         {
-            cashView.Text = $"₹{Question.Amounts[answered]}";
+            if (cashView != null)
+                cashView.Text = $"₹{Question.Amounts[answered]}";
         }
 
         void ResultView(ResultType ResultType)
@@ -340,14 +366,14 @@ namespace KBC
             correctAnswerMediaPlayer.Start();
 
             RunOnUiThread(() => b.SetColor(OptionCorrectColor));
-
-            // Money tree gets updated
-            ++answered;
-
+            
             Thread.Sleep(3000);
 
             RunOnUiThread(() =>
             {
+                ++answered;
+                UpdateMoneyTreeFragment();
+
                 foreach (var option in options)
                     option.SetColor(OptionDefaultColor);
 

@@ -53,26 +53,28 @@
             android:gravity="center"
             android:padding="20dp"
             android:id="@+id/cashView" />
-      <RelativeLayout 
+        <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="10dp"
             android:id="@+id/timerLayout">
-        <TextView
-            android:text="30"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:id="@+id/timerView" />
-        <ProgressBar android:indeterminate="true"
-                     android:layout_centerInParent="true"
-                     android:indeterminateOnly="true"
-                     android:id="@+id/timerProgress"
-                     android:layout_height="wrap_content"
-                     android:layout_width="wrap_content"/>
-      </RelativeLayout>
+            <TextView
+                android:text="30"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:id="@+id/timerView" />
+            <ProgressBar
+                android:indeterminate="true"
+                android:layout_centerInParent="true"
+                android:indeterminateOnly="true"
+                android:id="@+id/timerProgress"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+        </RelativeLayout>
         <TextView
             android:textSize="30sp"
             android:text="This is a sample question"

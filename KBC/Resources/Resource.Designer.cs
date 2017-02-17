@@ -94,17 +94,20 @@ namespace KBC
 			// aapt resource value: 0x7f09000a
 			public const int fifty50Button = 2131296266;
 			
-			// aapt resource value: 0x7f09001a
-			public const int lifelinesUsedView = 2131296282;
+			// aapt resource value: 0x7f09001b
+			public const int lifelinesUsedView = 2131296283;
 			
-			// aapt resource value: 0x7f090017
-			public const int moneyTree = 2131296279;
+			// aapt resource value: 0x7f090016
+			public const int moneyTeeContainer = 2131296278;
+			
+			// aapt resource value: 0x7f090018
+			public const int moneyTree = 2131296280;
 			
 			// aapt resource value: 0x7f090008
 			public const int moneyTreeButton = 2131296264;
 			
-			// aapt resource value: 0x7f090016
-			public const int newGameButton = 2131296278;
+			// aapt resource value: 0x7f090017
+			public const int newGameButton = 2131296279;
 			
 			// aapt resource value: 0x7f090012
 			public const int optionA = 2131296274;
@@ -142,17 +145,17 @@ namespace KBC
 			// aapt resource value: 0x7f090006
 			public const int optionDCent = 2131296262;
 			
-			// aapt resource value: 0x7f09001b
-			public const int playAgainButton = 2131296283;
+			// aapt resource value: 0x7f09001c
+			public const int playAgainButton = 2131296284;
 			
 			// aapt resource value: 0x7f090011
 			public const int questionView = 2131296273;
 			
-			// aapt resource value: 0x7f090019
-			public const int resultCashView = 2131296281;
+			// aapt resource value: 0x7f09001a
+			public const int resultCashView = 2131296282;
 			
-			// aapt resource value: 0x7f090018
-			public const int resultMessageView = 2131296280;
+			// aapt resource value: 0x7f090019
+			public const int resultMessageView = 2131296281;
 			
 			// aapt resource value: 0x7f09000e
 			public const int timerLayout = 2131296270;

@@ -13,37 +13,69 @@
             android:padding="16dp"
             android:paddingTop="40dp"
             android:layout_weight="1">
-          <RelativeLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp"
-            android:id="@+id/timerLayout">
-            <TextView
-                android:text="30"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_centerVertical="true"
-                android:id="@+id/timerView" />
-            <ProgressBar android:indeterminate="true"
-                         android:layout_centerInParent="true"
-                         android:indeterminateOnly="true"
-                         android:id="@+id/timerProgress"
-                         android:layout_height="wrap_content"
-                         android:layout_width="wrap_content"/>
-          </RelativeLayout>
+                android:paddingTop="10dp">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Audience Poll"
+                    android:layout_weight="1"
+                    android:id="@+id/audiencePollButton" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="50 50"
+                    android:layout_weight="1"
+                    android:id="@+id/fifty50Button" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Double Tip"
+                    android:layout_weight="1"
+                    android:id="@+id/doubleTipButton" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Change Question"
+                    android:layout_weight="1"
+                    android:visibility="gone"
+                    android:id="@+id/changeQuestionButton" />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/timerLayout">
+                <TextView
+                    android:text="30"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/timerView" />
+                <ProgressBar
+                    android:indeterminate="true"
+                    android:layout_centerInParent="true"
+                    android:indeterminateOnly="true"
+                    android:id="@+id/timerProgress"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" />
+            </RelativeLayout>
             <TextView
                 android:textSize="30sp"
                 android:text="This is a sample question"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
                 android:id="@+id/questionView" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:paddingTop="50dp">
+                android:paddingTop="20dp">
                 <Button
                     android:id="@+id/optionA"
                     android:layout_weight="1"
@@ -80,57 +112,11 @@
                     android:layout_margin="5dp" />
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
+        <FrameLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent"
+            android:id="@+id/moneyTeeContainer"
             android:layout_weight="2"
-            android:padding="16dp">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="View Money Tree"
-                android:id="@+id/moneyTreeButton" />
-          <TextView
-              android:text="₹0"
-              android:layout_height="wrap_content"
-              android:layout_width="match_parent"
-              android:layout_marginTop="20dp"
-              android:textSize="35sp"
-              android:gravity="center"
-              android:padding="20dp"
-              android:id="@+id/cashView" />
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:paddingTop="20dp">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Audience Poll"
-                    android:layout_weight="1"
-                    android:id="@+id/audiencePollButton" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="50 50"
-                    android:layout_weight="1"
-                    android:id="@+id/fifty50Button" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Double Tip"
-                    android:layout_weight="1"
-                    android:id="@+id/doubleTipButton" />
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Change Question"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:id="@+id/changeQuestionButton" />
-            </LinearLayout>
-        </LinearLayout>
+            android:padding="16dp" />
     </LinearLayout>
 </ScrollView>

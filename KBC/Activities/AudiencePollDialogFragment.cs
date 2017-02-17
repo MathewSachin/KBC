@@ -5,13 +5,13 @@ using System;
 
 namespace KBC
 {
-    public class AudiencePollFragment : DialogFragment
+    public class AudiencePollDialogFragment : DialogFragment
     {
         event Action GoingWithAudience;
 
-        public static AudiencePollFragment Create(int CorrectOption, Action GoWithAudience)
+        public static AudiencePollDialogFragment Create(int CorrectOption, Action GoWithAudience)
         {
-            var f = new AudiencePollFragment();
+            var f = new AudiencePollDialogFragment();
             f.GoingWithAudience += GoWithAudience;
 
             var args = new Bundle();
