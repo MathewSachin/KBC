@@ -131,39 +131,39 @@ namespace KBC
                 askedMedium.AddRange(bundle.GetIntArray(nameof(askedMedium)));
 
                 ShowQuestion(currentQuestion);
-                
+
                 fifty50Used = bundle.GetBoolean(nameof(fifty50Used));
                 doubleTipUsed = bundle.GetBoolean(nameof(doubleTipUsed));
                 audiencePollUsed = bundle.GetBoolean(nameof(audiencePollUsed));
                 changeQuestionUsed = bundle.GetBoolean(nameof(changeQuestionUsed));
 
-                if (fifty50Used)
-                {
-                    fifty50Button.Enabled = false;
-                    fifty50Button.SetColor(OptionWrongColor);
-                }
-
-                if (doubleTipUsed)
-                {
-                    doubleTipButton.Enabled = false;
-                    doubleTipButton.SetColor(OptionWrongColor);
-                }
-
-                if (audiencePollUsed)
-                {
-                    audiencePollButton.Enabled = false;
-                    audiencePollButton.SetColor(OptionWrongColor);
-                }
-
-                if (changeQuestionUsed)
-                {
-                    changeQuestionButton.Enabled = false;
-                    changeQuestionButton.SetColor(OptionWrongColor);
-                }
+                UpdateLifelineButtons();
             }
 
             if (cashView == null)
                 InitMoneyTreeFragment();
+        }
+
+        void UpdateLifelineButtons()
+        {
+            fifty50Button.Clickable = !fifty50Used;
+            doubleTipButton.Clickable = !doubleTipUsed;
+            audiencePollButton.Clickable = !audiencePollUsed;
+            changeQuestionButton.Clickable = !changeQuestionUsed;
+
+            fifty50Button.Enabled = doubleTipButton.Enabled = audiencePollButton.Enabled = changeQuestionButton.Enabled = true;
+
+            if (fifty50Used)
+                fifty50Button.SetColor(OptionWrongColor);
+            
+            if (doubleTipUsed)
+                doubleTipButton.SetColor(OptionWrongColor);
+            
+            if (audiencePollUsed)
+                audiencePollButton.SetColor(OptionWrongColor);
+            
+            if (changeQuestionUsed)
+                changeQuestionButton.SetColor(OptionWrongColor);
         }
 
         public override void OnBackPressed()
@@ -202,7 +202,6 @@ namespace KBC
             ShowQuestion();
 
             changeQuestionUsed = true;
-            changeQuestionButton.SetColor(OptionWrongColor);
 
             LifelineState(true);
         }
@@ -213,9 +212,12 @@ namespace KBC
             frag.Show(FragmentManager, "AudiencePoll");
 
             audiencePollUsed = true;
-            audiencePollButton.SetColor(OptionWrongColor);
+            audiencePollButton.SetColor(OptionIndeterminateColor);
 
             LifelineState(false);
+
+            audiencePollButton.Clickable = false;
+            audiencePollButton.Enabled = true;
         }
 
         void DoubleTip(object sender, EventArgs e)
@@ -223,25 +225,24 @@ namespace KBC
             doubleTip = true;
 
             doubleTipUsed = true;
-            doubleTipButton.SetColor(OptionWrongColor);
+            doubleTipButton.SetColor(OptionIndeterminateColor);
 
             LifelineState(false);
+
+            doubleTipButton.Clickable = false;
+            doubleTipButton.Enabled = true;
         }
 
         void LifelineState(bool Enabled)
         {
             if (!Enabled)
-                fifty50Button.Enabled = doubleTipButton.Enabled = audiencePollButton.Enabled = changeQuestionButton.Enabled = false;
-            else
             {
-                fifty50Button.Enabled = !fifty50Used;
-
-                doubleTipButton.Enabled = !doubleTipUsed;
-
-                audiencePollButton.Enabled = !audiencePollUsed;
-                
-                changeQuestionButton.Enabled = !changeQuestionUsed;
-            }
+                fifty50Button.Enabled = fifty50Used;
+                doubleTipButton.Enabled = doubleTipUsed;
+                audiencePollButton.Enabled = audiencePollUsed;
+                changeQuestionButton.Enabled = changeQuestionUsed;
+            }                
+            else UpdateLifelineButtons();
         }
 
         void Fifty50(object sender, EventArgs e)
@@ -261,9 +262,12 @@ namespace KBC
             }
             
             fifty50Used = true;
-            fifty50Button.SetColor(OptionWrongColor);
+            fifty50Button.SetColor(OptionIndeterminateColor);
 
             LifelineState(false);
+
+            fifty50Button.Clickable = false;
+            fifty50Button.Enabled = true;
         }
 
         void ViewMoneyTree(object sender, EventArgs e)
