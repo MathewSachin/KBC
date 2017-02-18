@@ -24,6 +24,7 @@ namespace KBC
             playSounds = settings.GetBoolean(nameof(playSounds), false);
 
             var playSoundsCheck = FindViewById<CheckBox>(Resource.Id.playSoundsCheck);
+            playSoundsCheck.Checked = playSounds;
             playSoundsCheck.CheckedChange += (s, e) => playSounds = e.IsChecked;
         }
 
