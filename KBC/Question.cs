@@ -16,9 +16,7 @@ namespace KBC
         public string[] Options { get; }
 
         public int CorrectOption { get; }
-
-        public bool Asked { get; set; }
-
+        
         public static string[] Amounts { get; } =
         {
             "5,000", "10,000", "20,000", "40,000", "80,000", "1,60,000", "3,20,000", "6,40,000", "12,50,000", "25,00,000", "50,00,000", "1 Crore", "3 Crore", "5 Crore", "7 Crore"

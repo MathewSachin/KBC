@@ -29,11 +29,17 @@ namespace KBC
             new Question("Which of these is not a computer operating system?", "Apple OS X", "Linux", "Windows 8", "Adobe Photoshop", 4),
             new Question("Which of these is not among the four Vedas?", "Yajur", "Ayurved", "Rig", "Sama", 2),
             new Question("Which vitamin helps with blood clothing", "A", "B", "C", "K", 4),
+            new Question("In a circle, which of these is half of the diameter?", "Area", "Centre", "Circumference", "Radius", 4),
+            new Question("About whom did the poet write, 'Lakshmi thi yaa Durga thi woh swayam veerta ki avatar, dekh marathe pulkit hote uski talwaaroke ke waar?'", "Rani Durgavati", "Jhansi ki rani", "Rani Ahilyabai Holkar", "Rani Padmavati", 2),
+            new Question("Which of these gases is named for it’s color?", "Helium", "Methane", "Oxygen", "Chlorine", 4),
+            new Question("Which aspect about a person is known by the words 'natkhat' and 'manmauji'?", "Height", "Skin Colour", "Nature", "Marital Status", 3),
+            new Question("Which demon is shown alongside goddess Durga in puja pandals during the traditional Durga Puja celebrations?", "Bakasura", "Vanasura", "Bhasmasura", "Mahisashura", 4),
+            new Question("In which of these sports are the terms reverse swing and reverse sweep used?", "Football", "Cricket", "Badminton", "Tennis", 2),
+            new Question("Damascus is the capital of which country?", "Tunisia", "Jordan", "Syria", "Lebanon", 3),
         };
 
         public static Question[] Medium { get; } =
-        {
-            new Question("Damascus is the capital of which country?", "Tunisia", "Jordan", "Syria", "Lebanon", 3),
+        {            
             new Question("In the Ramayana, Which demon impersonated Rama's voice, screaming, 'Lakshman! Help Me!'?", "Surpanakha", "Khara", "Maricha", "Dushana", 3),
             new Question("Who is the only leader to be elected Prime Minister of Pakistan three times", "Syed Yousaf Raza Gillani", "Benazir Bhutto", "Liaqat Ali Khan", "Nawaz Sharif", 4),
             new Question("Douglas Engelbert, who passed away in 2013, is credited as the inventor of which of these products?", "Mobile Phone", "Computer Mouse", "Bluetooth Mouse", "Digital Camera", 2),
@@ -84,6 +90,14 @@ namespace KBC
             new Question("Which of these personalities has also served as Deputy prime Minister of India?", "Lal Bahadur Shastri", "L K Advani", "Gulzarilal nanda", "Arjun Singh", 2),
             new Question("What name was given to the operation by the Indian Army to rescue stranded travellers from Uttarakhand during the 2013 floods?", "Operation Sukun", "Operation Asha", "Operation Flood", "Operation Surya Hope", 4),
             new Question("What is India's first ingeniously developed passenger car?", "Maruti 800", "Tata Indica", "Premier Padmini", "Ambassador", 2),
+            new Question("Where was Indian diplomat Devyani Khobragade posted when she was arrested in a visa case in 2013?", "England", "Switzerland", "USA", "Russia", 3),
+            new Question("Which queen did Draupadi,the wife of five pandavas, serve in the guise of Sairandhri for one year?", "Sanjana", "Satyavati", "Satyabhama", "Sudeshna", 4),
+            new Question("Which newspaper once kept its editorial cloumn blank as a mark of protest against the emergency of 1975?", "Hindustan Times", "The Indian Express", "The Hindu", "The Times of India", 2),
+            new Question("Which dance form is believed to have been inspired from Gotipua Nritya?", "Manipuri", "Kuchipudi", "Odissi", "Kathakali", 3),
+            new Question("Who became the chief minister of Bihar in 2014?", "Nitish Kumar", "Vijay Kumar Chaudhary", "Narendra Narayan Yadav", "Jeetan Ram Majhi", 4),
+            new Question("Which of these temples is located in Kathmandu,the capital of Nepal?", "Kamakhya Temple", "Pashupatinath Temple", "Viswanath Temple", "Baba Baidyanath Temple", 2),
+            new Question("Who was the first deaf-blind person to receive a bachelor of arts degree?", "Alice Betteridge", "Helen Keller", "Laura Bridgman", "Sanzan Tani", 2),
+            new Question("Which of these tiger reserves in India is adjacent to Chitwan National park in Nepal?", "Dudhwa", "Corbett", "Valmiki", "Buxa", 3),
         };
     }
 }
