@@ -47,7 +47,9 @@ namespace KBC
             new Question("Which of these is measured with the help of a glucometer?", "Heartbeat", "Blood pressure", "Blood Sugar", "Vision", 3),
             new Question("With which of these states does Telengana not share its border?", "Tamil Nadu", "Karnataka", "Chattisgarh", "Maharashtra", 1),
             new Question("How many watts equal a megawatt?", "One Hundred", "One Thousand", "Ten Thousand", "One Lakh", 4),
-            new Question("Which of these numbers is only divisible by 1 and itself?", "12", "13", "14", "15", 2),            
+            new Question("Which of these numbers is only divisible by 1 and itself?", "12", "13", "14", "15", 2),
+            new Question("Which is the only one of these creatures to not walk on four legs?", "Giraffe", "Ostrich", "Rhinoceros", "Gorilla", 2),
+            new Question("Which of these is shorter than 1 inch?", "2 Centimeter", "3 Centimeter", "4 Centimeter", "5 Centimeter", 1),
         };
 
         public static Question[] Medium { get; } =
@@ -110,7 +112,7 @@ namespace KBC
             new Question("Which of these temples is located in Kathmandu,the capital of Nepal?", "Kamakhya Temple", "Pashupatinath Temple", "Viswanath Temple", "Baba Baidyanath Temple", 2),
             new Question("Who was the first deaf-blind person to receive a bachelor of arts degree?", "Alice Betteridge", "Helen Keller", "Laura Bridgman", "Sanzan Tani", 2),
             new Question("Which of these tiger reserves in India is adjacent to Chitwan National park in Nepal?", "Dudhwa", "Corbett", "Valmiki", "Buxa", 3),
-            new Question("17. Which celebrated Italian film maker on a visit to India fell in love with a Bengali lady, Sonali Dasgupta?", "Sergio Leone", "Federico Fellini", "Roberto Rossellini", "Luchino Visconti", 3),
+            new Question("Which celebrated Italian film maker on a visit to India fell in love with a Bengali lady, Sonali Dasgupta?", "Sergio Leone", "Federico Fellini", "Roberto Rossellini", "Luchino Visconti", 3),
             new Question("Which of these are names of national parks located in Madhya Pradesh?", "Krishna and Kanhaiya", "Ghanshyam and Murari", "Kanha and Madhav", "Girdhar and Gopal", 3),
             new Question("Where was the BRICS summit held in 2014?", "Brazil", "India", "Russia", "China", 1),
             new Question("Who wrote the introduction to the English translation of Rabindranath Tagore’s Gitanjali?", "P. B. Shelley", "T.S. Elliot", "W. B. Yeats", "Alfred Tennyson", 3),
@@ -134,6 +136,8 @@ namespace KBC
             new Question("Which of these is not a Dravidian language?", "Tamil", "Karnataka", "Malyalam", "Assamese", 4),
             new Question("In 2014,on which ground did India win a test match after 28 years?", "The Oval", "MCG", "Lord’s", "Bristol", 3),
             new Question("Which of these animals is the largest member of the dog family?", "Jackal", "Hyena", "Wolf", "Fox", 3),
+            new Question("For what offence was footballer Luis Suarez banned for 9 international matches in 2014?", "Head Butting", "Bitting", "Failing the Dope Test", "Slapping The Referee", 2),
+            new Question("In the Mahabharata, who among these was the uncle of Ghototkach?", "Barbarika", "Jarashandha", "Hidimb", "Shikhandi", 3),
         };
     }
 }
