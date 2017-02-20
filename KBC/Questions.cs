@@ -125,7 +125,7 @@ namespace KBC
             new Question("Who are the only married couple elected to the 16th Lok Sabha?", "Sukhbir Singh-Harshimrat Kaur Badal", "Pappu Yadav-Ranjeet Ranjan", "Prakash-Brinda Karat", "Priya Ranjan-Deepa Dasmunshi", 2),
             new Question("In which state is the Larji Hydroelectric Power Project located?", "Uttarakhand", "Himachal Pradesh", "Sikkim", "Jammu and Kashmir", 2),
             new Question("During which of these legendary events did Lord Vishnu take the form of Kurma?", "Hiranyakashipu Sanhar", "Kaliya Naag Mardan", "Samudra Manthan", "Kurukshetra Yudh", 3),
-            new Question("Effective on may 2014,the European union imposed a temporary ban on the import of which of these fruits from India?", "Banana", "Litchi", "Mango", "Pineapple", 3),
+            new Question("Effective on May 2014, the European union imposed a temporary ban on the import of which of these fruits from India?", "Banana", "Litchi", "Mango", "Pineapple", 3),
             new Question("Where did Homi Jehangir Bhaba,the principal architect of India’s nuclear program, die in a plane crash?", "Mont Blanc", "Monte Rosa", "Mount Ararat", "Mount Elbrus", 1),
             new Question("Whose autobiography is titled 'Man of Everest' also published as 'Tiger of the snows'?", "Sir Edmund Hillary", "George Mallory", "Major H P S Aluhwalia", "Tenzing Norgay", 4),
             new Question("Which of these countries is larger than India in territorial space?", "Australia", "Argentina", "Kazakhstan", "Iran", 1),

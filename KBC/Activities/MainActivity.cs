@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Widget;
 using System;
@@ -19,9 +20,11 @@ namespace KBC
             SetContentView (Resource.Layout.Main);
 
             var newGameButton = FindViewById<Button>(Resource.Id.newGameButton);
+            newGameButton.SetColor(Extensions.OptionDefaultColor);
             newGameButton.Click += NewGame;
 
             var helpButton = FindViewById<Button>(Resource.Id.helpButton);
+            helpButton.SetColor(Extensions.OptionDefaultColor);
             helpButton.Click += Help;
 
             var settings = GetSharedPreferences("Preferences", 0);

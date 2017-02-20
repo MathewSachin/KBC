@@ -30,12 +30,7 @@ namespace KBC
         MediaPlayer correctAnswerMediaPlayer;
 
         List<int> askedEasy, askedMedium;
-
-        readonly Color OptionDefaultColor = Color.ParseColor("#424242"),
-            OptionIndeterminateColor = Color.Gold,
-            OptionCorrectColor = Color.ParseColor("#43a047"),
-            OptionWrongColor = Color.ParseColor("#e53935");
-
+        
         CountDown timer;
         #endregion
 
@@ -64,7 +59,7 @@ namespace KBC
             options[3].Click += (s, e) => OptionClick(4);
 
             foreach (var option in options)
-                option.SetColor(OptionDefaultColor);
+                option.SetColor(Extensions.OptionDefaultColor);
 
             cashView = FindViewById<Button>(Resource.Id.cashView);
             if (cashView != null)
@@ -155,16 +150,16 @@ namespace KBC
             fifty50Button.Enabled = doubleTipButton.Enabled = audiencePollButton.Enabled = changeQuestionButton.Enabled = true;
 
             if (fifty50Used)
-                fifty50Button.SetColor(OptionWrongColor);
+                fifty50Button.SetColor(Extensions.OptionWrongColor);
             
             if (doubleTipUsed)
-                doubleTipButton.SetColor(OptionWrongColor);
+                doubleTipButton.SetColor(Extensions.OptionWrongColor);
             
             if (audiencePollUsed)
-                audiencePollButton.SetColor(OptionWrongColor);
+                audiencePollButton.SetColor(Extensions.OptionWrongColor);
             
             if (changeQuestionUsed)
-                changeQuestionButton.SetColor(OptionWrongColor);
+                changeQuestionButton.SetColor(Extensions.OptionWrongColor);
         }
 
         public override void OnBackPressed()
@@ -213,7 +208,7 @@ namespace KBC
             frag.Show(FragmentManager, "AudiencePoll");
 
             audiencePollUsed = true;
-            audiencePollButton.SetColor(OptionIndeterminateColor);
+            audiencePollButton.SetColor(Extensions.OptionIndeterminateColor);
 
             LifelineState(false);
 
@@ -226,7 +221,7 @@ namespace KBC
             doubleTip = true;
 
             doubleTipUsed = true;
-            doubleTipButton.SetColor(OptionIndeterminateColor);
+            doubleTipButton.SetColor(Extensions.OptionIndeterminateColor);
 
             LifelineState(false);
 
@@ -263,7 +258,7 @@ namespace KBC
             }
             
             fifty50Used = true;
-            fifty50Button.SetColor(OptionIndeterminateColor);
+            fifty50Button.SetColor(Extensions.OptionIndeterminateColor);
 
             LifelineState(false);
 
@@ -371,7 +366,7 @@ namespace KBC
         {
             correctAnswerMediaPlayer?.Start();
 
-            RunOnUiThread(() => b.SetColor(OptionCorrectColor));
+            RunOnUiThread(() => b.SetColor(Extensions.OptionCorrectColor));
             
             Thread.Sleep(3000);
 
@@ -381,7 +376,7 @@ namespace KBC
                 UpdateMoneyTreeFragment();
 
                 foreach (var option in options)
-                    option.SetColor(OptionDefaultColor);
+                    option.SetColor(Extensions.OptionDefaultColor);
 
                 if (answered == Question.Amounts.Length)
                     ResultView(ResultType.Win);
@@ -413,7 +408,7 @@ namespace KBC
             
             LifelineState(false);
 
-            b.SetColor(OptionIndeterminateColor);
+            b.SetColor(Extensions.OptionIndeterminateColor);
 
             new Thread(() =>
             {
@@ -425,7 +420,7 @@ namespace KBC
                 {
                     RunOnUiThread(() =>
                     {
-                        b.SetColor(OptionWrongColor);
+                        b.SetColor(Extensions.OptionWrongColor);
                         
                         foreach (var option in options)
                             option.Clickable = true;
@@ -436,11 +431,11 @@ namespace KBC
                 }
                 else
                 {
-                    RunOnUiThread(() => b.SetColor(OptionWrongColor));
+                    RunOnUiThread(() => b.SetColor(Extensions.OptionWrongColor));
 
                     Thread.Sleep(500);
 
-                    RunOnUiThread(() => options[correctOption - 1].SetColor(OptionCorrectColor));
+                    RunOnUiThread(() => options[correctOption - 1].SetColor(Extensions.OptionCorrectColor));
 
                     Thread.Sleep(1000);
 

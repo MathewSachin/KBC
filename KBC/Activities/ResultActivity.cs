@@ -63,6 +63,7 @@ namespace KBC
             cashView.Text = "₹" + GetAmount(answered, resultType == ResultType.Quit);
 
             var playAgainButton = FindViewById<Button>(Resource.Id.playAgainButton);
+            playAgainButton.SetColor(Extensions.OptionDefaultColor);
             playAgainButton.Click += PlayAgain;
         }
 

@@ -12,12 +12,14 @@
             android:layout_height="wrap_content"
             android:src="@drawable/Splash" />
         <Button
+            android:background="@drawable/Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Game"
             android:id="@+id/newGameButton"
             android:layout_marginTop="40dp" />
       <Button
+          android:background="@drawable/Button"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="Help"

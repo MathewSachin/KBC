@@ -26,6 +26,7 @@
                 android:paddingBottom="20dp"
                 android:id="@+id/lifelinesUsedView"/>
         <Button
+            android:background="@drawable/Button"
             android:text="Play Again"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

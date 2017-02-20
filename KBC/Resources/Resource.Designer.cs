@@ -61,7 +61,7 @@ namespace KBC
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Button = 2130837504;
+			public const int button = 2130837504;
 			
 			// aapt resource value: 0x7f020001
 			public const int Splash = 2130837505;
