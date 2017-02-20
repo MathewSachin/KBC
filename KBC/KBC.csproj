@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\HelpActivity.cs" />
     <Compile Include="Activities\MoneyTreeFragment.cs" />
     <Compile Include="Activities\AudiencePollDialogFragment.cs" />
     <Compile Include="CountDown.cs" />
@@ -92,6 +93,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout-land\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Help.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

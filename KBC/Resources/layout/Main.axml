@@ -17,6 +17,12 @@
             android:text="New Game"
             android:id="@+id/newGameButton"
             android:layout_marginTop="40dp" />
+      <Button
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Help"
+          android:id="@+id/helpButton"
+          android:layout_marginTop="10dp" />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

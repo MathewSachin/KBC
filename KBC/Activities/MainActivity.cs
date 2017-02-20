@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using System;
 
 namespace KBC
 {
@@ -20,12 +21,21 @@ namespace KBC
             var newGameButton = FindViewById<Button>(Resource.Id.newGameButton);
             newGameButton.Click += NewGame;
 
+            var helpButton = FindViewById<Button>(Resource.Id.helpButton);
+            helpButton.Click += Help;
+
             var settings = GetSharedPreferences("Preferences", 0);
             playSounds = settings.GetBoolean(nameof(playSounds), false);
 
             var playSoundsCheck = FindViewById<CheckBox>(Resource.Id.playSoundsCheck);
             playSoundsCheck.Checked = playSounds;
             playSoundsCheck.CheckedChange += (s, e) => playSounds = e.IsChecked;
+        }
+
+        void Help(object sender, EventArgs e)
+        {
+            var i = new Intent(this, typeof(HelpActivity));
+            StartActivity(i);
         }
 
         protected override void OnPause()
@@ -40,7 +50,7 @@ namespace KBC
             editor.Commit();
         }
 
-        void NewGame(object sender, System.EventArgs e)
+        void NewGame(object sender, EventArgs e)
         {
             var i = new Intent(this, typeof(GameActivity));
             StartActivity(i);            

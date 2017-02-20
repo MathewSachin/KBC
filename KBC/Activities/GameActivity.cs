@@ -8,6 +8,7 @@ using Android.Graphics;
 using System.Threading;
 using System.Collections.Generic;
 using Android.Media;
+using Android.Text;
 
 namespace KBC
 {
@@ -21,7 +22,7 @@ namespace KBC
         ProgressBar timerProgress;
         bool doubleTip;
         
-        Button[] options;
+        TextView[] options;
 
         bool fifty50Used, doubleTipUsed, audiencePollUsed, changeQuestionUsed;
         Button fifty50Button, doubleTipButton, audiencePollButton, changeQuestionButton, cashView;
@@ -51,10 +52,10 @@ namespace KBC
             
             options = new[] 
             {
-                FindViewById<Button>(Resource.Id.optionA),
-                FindViewById<Button>(Resource.Id.optionB),
-                FindViewById<Button>(Resource.Id.optionC),
-                FindViewById<Button>(Resource.Id.optionD)
+                FindViewById<TextView>(Resource.Id.optionA),
+                FindViewById<TextView>(Resource.Id.optionB),
+                FindViewById<TextView>(Resource.Id.optionC),
+                FindViewById<TextView>(Resource.Id.optionD)
             };
 
             options[0].Click += (s, e) => OptionClick(1);
@@ -247,7 +248,7 @@ namespace KBC
 
         void Fifty50(object sender, EventArgs e)
         {
-            var list = new List<Button>();
+            var list = new List<TextView>();
 
             for (int i = 1; i <= 4; ++i)
                 if (correctOption != i)
@@ -331,11 +332,11 @@ namespace KBC
             asked.Add(Index);
 
             var q = bank[Index];
-
-            questionView.Text = $"{answered + 1}. {q.Statement}";
+            
+            questionView.TextFormatted = Html.FromHtml($"<font color='#EEBB00'>{answered + 1}</font>. {q.Statement}");
 
             for (int i = 0; i < 4; ++i)
-                options[i].Text = $"{(char)('A' + i)}. {q.Options[i]}";
+                options[i].TextFormatted = Html.FromHtml($"<font color='#EEBB00'>{(char)('A' + i)}</font>. {q.Options[i]}");
 
             correctOption = q.CorrectOption;
                         
@@ -366,7 +367,7 @@ namespace KBC
             Finish();
         }
 
-        void AfterCorrectAnswer(Button b)
+        void AfterCorrectAnswer(TextView b)
         {
             correctAnswerMediaPlayer?.Start();
 
