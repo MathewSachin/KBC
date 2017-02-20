@@ -3,7 +3,95 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:padding="16dp">
-  <TextView android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/helpText"/>
+            android:text="Help"
+            android:textSize="30sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/introText"
+            android:paddingTop="20dp" />
+      <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="Lifelines"
+            android:textSize="20sp"/>
+      <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="20dp"
+              android:text="There are four lifelines to help you on the way:"/>      
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/audiencePollText"
+                android:paddingTop="20dp"
+                android:layout_weight="1" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/audience" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/fifty50Text"
+              android:paddingTop="20dp"
+              android:layout_weight="1" />
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/fifty50" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/doubleDipText"
+              android:paddingTop="20dp"
+              android:layout_weight="1" />
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/doubletip" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/changeQuestionText"
+              android:paddingTop="20dp"
+              android:layout_weight="1" />
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/change" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Every lifeline can only be used once throughout the game."
+            android:paddingTop="20dp" />
+    </LinearLayout>
 </ScrollView>
