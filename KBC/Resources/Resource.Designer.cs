@@ -61,10 +61,25 @@ namespace KBC
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int button = 2130837504;
+			public const int audience = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int Splash = 2130837505;
+			public const int button = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int change = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int doubleTip = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int fifty50 = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int Splash = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int wrong = 2130837510;
 			
 			static Drawable()
 			{

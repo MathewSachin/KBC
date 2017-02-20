@@ -19,25 +19,25 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Audience Poll"
+                    android:background="@drawable/audience"
                     android:layout_weight="1"
                     android:id="@+id/audiencePollButton" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="50 50"
+                    android:background="@drawable/fifty50"
                     android:layout_weight="1"
                     android:id="@+id/fifty50Button" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Double Tip"
+                    android:background="@drawable/doubleTip"
                     android:layout_weight="1"
                     android:id="@+id/doubleTipButton" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Change Question"
+                    android:background="@drawable/change"
                     android:layout_weight="1"
                     android:visibility="gone"
                     android:id="@+id/changeQuestionButton" />

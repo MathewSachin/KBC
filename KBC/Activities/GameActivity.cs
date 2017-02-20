@@ -132,9 +132,9 @@ namespace KBC
                 doubleTipUsed = bundle.GetBoolean(nameof(doubleTipUsed));
                 audiencePollUsed = bundle.GetBoolean(nameof(audiencePollUsed));
                 changeQuestionUsed = bundle.GetBoolean(nameof(changeQuestionUsed));
-
-                UpdateLifelineButtons();
             }
+            
+            UpdateLifelineButtons();
 
             if (cashView == null)
                 InitMoneyTreeFragment();
@@ -146,20 +146,11 @@ namespace KBC
             doubleTipButton.Clickable = !doubleTipUsed;
             audiencePollButton.Clickable = !audiencePollUsed;
             changeQuestionButton.Clickable = !changeQuestionUsed;
-
-            fifty50Button.Enabled = doubleTipButton.Enabled = audiencePollButton.Enabled = changeQuestionButton.Enabled = true;
-
-            if (fifty50Used)
-                fifty50Button.SetColor(Extensions.OptionWrongColor);
             
-            if (doubleTipUsed)
-                doubleTipButton.SetColor(Extensions.OptionWrongColor);
-            
-            if (audiencePollUsed)
-                audiencePollButton.SetColor(Extensions.OptionWrongColor);
-            
-            if (changeQuestionUsed)
-                changeQuestionButton.SetColor(Extensions.OptionWrongColor);
+            fifty50Button.Background.SetAlpha(fifty50Used ? 100 : 255);
+            doubleTipButton.Background.SetAlpha(doubleTipUsed ? 100 : 255);
+            audiencePollButton.Background.SetAlpha(audiencePollUsed ? 100 : 255);
+            changeQuestionButton.Background.SetAlpha(changeQuestionUsed ? 100 : 255);
         }
 
         public override void OnBackPressed()
@@ -208,12 +199,11 @@ namespace KBC
             frag.Show(FragmentManager, "AudiencePoll");
 
             audiencePollUsed = true;
-            audiencePollButton.SetColor(Extensions.OptionIndeterminateColor);
+            audiencePollButton.Background.SetAlpha(200);
 
             LifelineState(false);
 
             audiencePollButton.Clickable = false;
-            audiencePollButton.Enabled = true;
         }
 
         void DoubleTip(object sender, EventArgs e)
@@ -221,22 +211,28 @@ namespace KBC
             doubleTip = true;
 
             doubleTipUsed = true;
-            doubleTipButton.SetColor(Extensions.OptionIndeterminateColor);
+            doubleTipButton.Background.SetAlpha(200);
 
             LifelineState(false);
 
             doubleTipButton.Clickable = false;
-            doubleTipButton.Enabled = true;
         }
 
         void LifelineState(bool Enabled)
         {
             if (!Enabled)
             {
-                fifty50Button.Enabled = fifty50Used;
-                doubleTipButton.Enabled = doubleTipUsed;
-                audiencePollButton.Enabled = audiencePollUsed;
-                changeQuestionButton.Enabled = changeQuestionUsed;
+                if (!fifty50Used)
+                    fifty50Button.Background.SetAlpha(100);
+
+                if (!doubleTipUsed)
+                    doubleTipButton.Background.SetAlpha(100);
+
+                if (!audiencePollUsed)
+                    audiencePollButton.Background.SetAlpha(100);
+
+                if (!changeQuestionUsed)
+                    changeQuestionButton.Background.SetAlpha(100);
             }                
             else UpdateLifelineButtons();
         }
@@ -258,12 +254,11 @@ namespace KBC
             }
             
             fifty50Used = true;
-            fifty50Button.SetColor(Extensions.OptionIndeterminateColor);
+            fifty50Button.Background.SetAlpha(200);
 
             LifelineState(false);
 
             fifty50Button.Clickable = false;
-            fifty50Button.Enabled = true;
         }
 
         void ViewMoneyTree(object sender, EventArgs e)
