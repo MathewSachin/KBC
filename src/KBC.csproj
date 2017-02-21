@@ -145,7 +145,7 @@
     <AndroidResource Include="Resources\drawable\change.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\doubleTip.png" />
+    <AndroidResource Include="Resources\drawable\doubleDip.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\fifty50.png" />

@@ -70,7 +70,7 @@ namespace KBC
 			public const int change = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int doubleTip = 2130837507;
+			public const int doubleDip = 2130837507;
 			
 			// aapt resource value: 0x7f020004
 			public const int fifty50 = 2130837508;
@@ -109,11 +109,11 @@ namespace KBC
 			// aapt resource value: 0x7f09001a
 			public const int changeQuestionText = 2131296282;
 			
+			// aapt resource value: 0x7f09000a
+			public const int doubleDipButton = 2131296266;
+			
 			// aapt resource value: 0x7f090019
 			public const int doubleDipText = 2131296281;
-			
-			// aapt resource value: 0x7f09000a
-			public const int doubleTipButton = 2131296266;
 			
 			// aapt resource value: 0x7f090009
 			public const int fifty50Button = 2131296265;

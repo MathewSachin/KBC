@@ -25,8 +25,8 @@ namespace KBC
             if (fifty50Used)
                 ++lifelinesUsed;
 
-            var doubleTipUsed = Intent.Extras.GetBoolean("doubleTipUsed");
-            if (doubleTipUsed)
+            var doubleDipUsed = Intent.Extras.GetBoolean("doubleDipUsed");
+            if (doubleDipUsed)
                 ++lifelinesUsed;
 
             var audiencePollUsed = Intent.Extras.GetBoolean("audiencePollUsed");
@@ -46,8 +46,8 @@ namespace KBC
                 if (fifty50Used)
                     lifelinesView.Text += "50 50\n";
 
-                if (doubleTipUsed)
-                    lifelinesView.Text += "Double Tip\n";
+                if (doubleDipUsed)
+                    lifelinesView.Text += "Double Dip\n";
 
                 if (audiencePollUsed)
                     lifelinesView.Text += "Audience Poll\n";

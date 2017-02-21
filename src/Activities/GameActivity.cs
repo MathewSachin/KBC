@@ -20,12 +20,12 @@ namespace KBC
         TextView questionView, timerView;
         RelativeLayout timerLayout;
         ProgressBar timerProgress;
-        bool doubleTip;
+        bool doubleDip;
         
         TextView[] options;
 
-        bool fifty50Used, doubleTipUsed, audiencePollUsed, changeQuestionUsed;
-        Button fifty50Button, doubleTipButton, audiencePollButton, changeQuestionButton, cashView;
+        bool fifty50Used, doubleDipUsed, audiencePollUsed, changeQuestionUsed;
+        Button fifty50Button, doubleDipButton, audiencePollButton, changeQuestionButton, cashView;
 
         MediaPlayer correctAnswerMediaPlayer;
 
@@ -69,8 +69,8 @@ namespace KBC
             fifty50Button = FindViewById<Button>(Resource.Id.fifty50Button);
             fifty50Button.Click += Fifty50;
 
-            doubleTipButton = FindViewById<Button>(Resource.Id.doubleTipButton);
-            doubleTipButton.Click += DoubleTip;
+            doubleDipButton = FindViewById<Button>(Resource.Id.doubleDipButton);
+            doubleDipButton.Click += DoubleDip;
 
             audiencePollButton = FindViewById<Button>(Resource.Id.audiencePollButton);
             audiencePollButton.Click += AudiencePoll;
@@ -129,7 +129,7 @@ namespace KBC
                 ShowQuestion(currentQuestion);
 
                 fifty50Used = bundle.GetBoolean(nameof(fifty50Used));
-                doubleTipUsed = bundle.GetBoolean(nameof(doubleTipUsed));
+                doubleDipUsed = bundle.GetBoolean(nameof(doubleDipUsed));
                 audiencePollUsed = bundle.GetBoolean(nameof(audiencePollUsed));
                 changeQuestionUsed = bundle.GetBoolean(nameof(changeQuestionUsed));
             }
@@ -143,12 +143,12 @@ namespace KBC
         void UpdateLifelineButtons()
         {
             fifty50Button.Clickable = !fifty50Used;
-            doubleTipButton.Clickable = !doubleTipUsed;
+            doubleDipButton.Clickable = !doubleDipUsed;
             audiencePollButton.Clickable = !audiencePollUsed;
             changeQuestionButton.Clickable = !changeQuestionUsed;
             
             fifty50Button.Background.SetAlpha(fifty50Used ? 100 : 255);
-            doubleTipButton.Background.SetAlpha(doubleTipUsed ? 100 : 255);
+            doubleDipButton.Background.SetAlpha(doubleDipUsed ? 100 : 255);
             audiencePollButton.Background.SetAlpha(audiencePollUsed ? 100 : 255);
             changeQuestionButton.Background.SetAlpha(changeQuestionUsed ? 100 : 255);
         }
@@ -174,7 +174,7 @@ namespace KBC
             outState.PutInt(nameof(timeLeft), timeLeft);
 
             outState.PutBoolean(nameof(fifty50Used), fifty50Used);
-            outState.PutBoolean(nameof(doubleTipUsed), doubleTipUsed);
+            outState.PutBoolean(nameof(doubleDipUsed), doubleDipUsed);
             outState.PutBoolean(nameof(audiencePollUsed), audiencePollUsed);
             outState.PutBoolean(nameof(changeQuestionUsed), changeQuestionUsed);
 
@@ -206,16 +206,16 @@ namespace KBC
             audiencePollButton.Clickable = false;
         }
 
-        void DoubleTip(object sender, EventArgs e)
+        void DoubleDip(object sender, EventArgs e)
         {
-            doubleTip = true;
+            doubleDip = true;
 
-            doubleTipUsed = true;
-            doubleTipButton.Background.SetAlpha(200);
+            doubleDipUsed = true;
+            doubleDipButton.Background.SetAlpha(200);
 
             LifelineState(false);
 
-            doubleTipButton.Clickable = false;
+            doubleDipButton.Clickable = false;
         }
 
         void LifelineState(bool Enabled)
@@ -225,8 +225,8 @@ namespace KBC
                 if (!fifty50Used)
                     fifty50Button.Background.SetAlpha(100);
 
-                if (!doubleTipUsed)
-                    doubleTipButton.Background.SetAlpha(100);
+                if (!doubleDipUsed)
+                    doubleDipButton.Background.SetAlpha(100);
 
                 if (!audiencePollUsed)
                     audiencePollButton.Background.SetAlpha(100);
@@ -348,7 +348,7 @@ namespace KBC
             i.PutExtra(nameof(ResultType), (int)ResultType);
 
             i.PutExtra(nameof(fifty50Used), fifty50Used);
-            i.PutExtra(nameof(doubleTipUsed), doubleTipUsed);
+            i.PutExtra(nameof(doubleDipUsed), doubleDipUsed);
             i.PutExtra(nameof(audiencePollUsed), audiencePollUsed);
             i.PutExtra(nameof(changeQuestionUsed), changeQuestionUsed);
 
@@ -385,7 +385,7 @@ namespace KBC
                         option.Clickable = true;
                     }
 
-                    doubleTip = false;
+                    doubleDip = false;
 
                     LifelineState(true);
                 }
@@ -411,7 +411,7 @@ namespace KBC
 
                 if (Index == correctOption)
                     AfterCorrectAnswer(b);
-                else if (doubleTip)
+                else if (doubleDip)
                 {
                     RunOnUiThread(() =>
                     {
@@ -421,7 +421,7 @@ namespace KBC
                             option.Clickable = true;
 
                         b.Clickable = false;
-                        doubleTip = false;
+                        doubleDip = false;
                     });
                 }
                 else

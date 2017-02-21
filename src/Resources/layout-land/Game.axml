@@ -31,9 +31,9 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/doubleTip"
+                    android:background="@drawable/doubleDip"
                     android:layout_weight="1"
-                    android:id="@+id/doubleTipButton" />
+                    android:id="@+id/doubleDipButton" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
