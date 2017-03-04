@@ -26,9 +26,7 @@ namespace KBC
 
         bool fifty50Used, doubleDipUsed, audiencePollUsed, changeQuestionUsed;
         Button fifty50Button, doubleDipButton, audiencePollButton, changeQuestionButton, cashView;
-
-        MediaPlayer correctAnswerMediaPlayer;
-
+        
         List<int> askedEasy, askedMedium;
         
         CountDown timer;
@@ -80,12 +78,6 @@ namespace KBC
 
             var settings = GetSharedPreferences("Preferences", 0);
             var playSounds = settings.GetBoolean("playSounds", false);
-
-            if (playSounds)
-            {
-                correctAnswerMediaPlayer = MediaPlayer.Create(this, Resource.Raw.Correct);
-                correctAnswerMediaPlayer.SetVolume(0.5f, 0.5f);
-            }
         }
         
         void InitMoneyTreeFragment()
@@ -359,11 +351,9 @@ namespace KBC
 
         void AfterCorrectAnswer(TextView b)
         {
-            correctAnswerMediaPlayer?.Start();
-
             RunOnUiThread(() => b.SetColor(Extensions.OptionCorrectColor));
             
-            Thread.Sleep(3000);
+            Thread.Sleep(1250);
 
             RunOnUiThread(() =>
             {
@@ -407,7 +397,7 @@ namespace KBC
 
             new Thread(() =>
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
 
                 if (Index == correctOption)
                     AfterCorrectAnswer(b);
