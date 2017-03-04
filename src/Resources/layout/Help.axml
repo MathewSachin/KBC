@@ -93,7 +93,9 @@ This lifeline allows you to answer two options for a question, winning if either
               android:paddingTop="20dp"
               android:layout_weight="1"
               android:text="4. Flip the Question\n\n
-This will skip the current questions and show you a new question without increasing your money."/>
+This will skip the current questions and show you a new question without increasing your money.
+
+This lifeline is only available after you cross the second safe level."/>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
