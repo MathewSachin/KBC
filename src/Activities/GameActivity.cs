@@ -7,7 +7,6 @@ using System;
 using Android.Graphics;
 using System.Threading;
 using System.Collections.Generic;
-using Android.Media;
 using Android.Text;
 
 namespace KBC
@@ -138,11 +137,11 @@ namespace KBC
             doubleDipButton.Clickable = !doubleDipUsed;
             audiencePollButton.Clickable = !audiencePollUsed;
             changeQuestionButton.Clickable = !changeQuestionUsed;
-            
-            fifty50Button.Background.SetAlpha(fifty50Used ? 100 : 255);
-            doubleDipButton.Background.SetAlpha(doubleDipUsed ? 100 : 255);
-            audiencePollButton.Background.SetAlpha(audiencePollUsed ? 100 : 255);
-            changeQuestionButton.Background.SetAlpha(changeQuestionUsed ? 100 : 255);
+
+            fifty50Button.SetBackgroundResource(fifty50Used ? Resource.Drawable.fifty50_used : Resource.Drawable.fifty50);
+            doubleDipButton.SetBackgroundResource(doubleDipUsed ? Resource.Drawable.doubleDip_used : Resource.Drawable.doubleDip);
+            audiencePollButton.SetBackgroundResource(audiencePollUsed ? Resource.Drawable.audience_used : Resource.Drawable.audience);
+            changeQuestionButton.SetBackgroundResource(changeQuestionUsed ? Resource.Drawable.change_used : Resource.Drawable.change);
         }
 
         public override void OnBackPressed()
@@ -191,7 +190,7 @@ namespace KBC
             frag.Show(FragmentManager, "AudiencePoll");
 
             audiencePollUsed = true;
-            audiencePollButton.Background.SetAlpha(200);
+            audiencePollButton.SetBackgroundResource(Resource.Drawable.audience_active);
 
             LifelineState(false);
 
@@ -203,7 +202,7 @@ namespace KBC
             doubleDip = true;
 
             doubleDipUsed = true;
-            doubleDipButton.Background.SetAlpha(200);
+            doubleDipButton.SetBackgroundResource(Resource.Drawable.doubleDip_active);
 
             LifelineState(false);
 
@@ -212,21 +211,8 @@ namespace KBC
 
         void LifelineState(bool Enabled)
         {
-            if (!Enabled)
-            {
-                if (!fifty50Used)
-                    fifty50Button.Background.SetAlpha(100);
-
-                if (!doubleDipUsed)
-                    doubleDipButton.Background.SetAlpha(100);
-
-                if (!audiencePollUsed)
-                    audiencePollButton.Background.SetAlpha(100);
-
-                if (!changeQuestionUsed)
-                    changeQuestionButton.Background.SetAlpha(100);
-            }                
-            else UpdateLifelineButtons();
+            if (Enabled)
+                UpdateLifelineButtons();
         }
 
         void Fifty50(object sender, EventArgs e)
@@ -246,7 +232,7 @@ namespace KBC
             }
             
             fifty50Used = true;
-            fifty50Button.Background.SetAlpha(200);
+            fifty50Button.SetBackgroundResource(Resource.Drawable.fifty50_active);
 
             LifelineState(false);
 
@@ -408,7 +394,8 @@ namespace KBC
                         b.SetColor(Extensions.OptionWrongColor);
                         
                         foreach (var option in options)
-                            option.Clickable = true;
+                            if (option.Text != "")
+                                option.Clickable = true;
 
                         b.Clickable = false;
                         doubleDip = false;
